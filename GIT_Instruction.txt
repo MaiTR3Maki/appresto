@@ -1,0 +1,15 @@
+1.Installer GIT
+
+2- Puis exécuter ces deux commandes dans le terminal du GITBash :
+git config --global user.name "Votre Nom" 
+git config --global user.email "votre email "
+
+3-Aller dans source Control dans VScode puis cliquer sur "clone repository"
+
+4-Mettre le lien "https://github.com/MaiTR3Maki/appresto.git"
+
+5-Selectionner un dossier créer dans le dossier projet de Xampp
+
+6-Pour mettre les modification sur GITHUB faire "... -> changes -> stage all" puis mettre un message et cliquer sur "✔/commit"
+
+ATTENTION - l'étape "6" est a faire en intégralité peut importe la modification 
