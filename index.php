@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Accueil</title>
 </head>
 <body>
 
 <div class="header">
-        <button onclick="window.location.href='#'">Connexion</button>
-        <button onclick="window.location.href='#'">Inscription</button>
+<a href="connexion.php"> <button>Connexion</button></a>
+<a href="inscription.php"> <button>Inscription</button></a>
     </div>
 
     <h1>Bienvenue chez Patate Douce !</h1>

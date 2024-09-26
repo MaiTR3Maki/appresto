@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Commander</title>
 </head>
 <body>
-<div class="header">
-        <button onclick="window.location.href='#'">Déconnexion  </button>
-    </div>
+
     <h1>Bienvenue chez Patate Douce !</h1>
     <p>Découvrez nos produits du moment</p>
 
@@ -57,7 +55,7 @@
         </div>
     </div>
     <div class="header">
-        <button onclick="window.location.href='#'">Valider</button>
+    <a href="choixcommande.php"><button>Valider</button></a>
     </div>
 </body>
 </html>
