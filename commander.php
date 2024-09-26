@@ -20,14 +20,40 @@ include "functions/functions.php"
 
   <table>
     <tr>
-        <th>Produits</th>
+        <th>Produit</th>
         <th>Prix</th>
-        <th>Images</th>
-        <th>sélectionné?</th>
+        <th>Image</th>
+        <th>Quantitté</th>
     </tr>
     <tr>
         <td>Big Mac</td>
         <td>9 €</td>
+        <td><img src="images/big-mac.png" alt="" height="50px" ></td>
+        <td><select name="" id=""> <option value="0">0</option>
+        <option value="1">1</option> 
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select></td>
+    </tr>
+
+    <tr>
+        <td>Mac Chicken</td>
+        <td>12 €</td>
+        <td><img src="images/big-mac.png" alt="" height="50px" ></td>
+        <td><select name="" id=""> <option value="0">0</option>
+        <option value="1">1</option> 
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select></td>
+    </tr>
+
+    <tr>
+        <td>Mac Fish</td>
+        <td>8 €</td>
         <td><img src="images/big-mac.png" alt="" height="50px" ></td>
         <td><select name="" id=""> <option value="0">0</option>
         <option value="1">1</option> 
