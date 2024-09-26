@@ -1,3 +1,6 @@
+<?php
+include "functions/functions.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,8 @@
     <title>Document</title>
 </head>
 <body>
+    
+ <?php navbar();?>
     <h2>Comfirmation du payement</h2>
     <input type="submit" value="Payer">
     <input type="submit" value="Abadonner">
