@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div
+    <div>
         <div>
             <h1>Paiement</h1>
             <h2>Commande à emporter</h2>
@@ -38,7 +38,7 @@
                 </ul>
             </div>
 
-            <div ion">
+            <div>
                 <div>
                     <span>Prix HT</span>
                     <span>32.5€</span>
