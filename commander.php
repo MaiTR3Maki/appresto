@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/main.css">
@@ -7,12 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-
 <div class="header">
-        <button onclick="window.location.href='#'">Connexion</button>
-        <button onclick="window.location.href='#'">Inscription</button>
+        <button onclick="window.location.href='#'">Déconnexion  </button>
     </div>
-
     <h1>Bienvenue chez Patate Douce !</h1>
     <p>Découvrez nos produits du moment</p>
 
@@ -59,7 +56,8 @@
             <p>Prix: 90.00€</p>
         </div>
     </div>
-
+    <div class="header">
+        <button onclick="window.location.href='#'">Valider</button>
+    </div>
 </body>
-</html>
 </html>
