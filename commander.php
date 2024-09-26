@@ -16,11 +16,19 @@
         <th>Produits</th>
         <th>Prix</th>
         <th>Images</th>
+        <th>sélectionné?</th>
     </tr>
     <tr>
         <td>Big Mac</td>
         <td>9 €</td>
-        <td><img src="images/big-mac.png" alt=""></td>
+        <td><img src="images/big-mac.png" alt="" height="50px" ></td>
+        <td><select name="" id=""> <option value="0">0</option>
+        <option value="1">1</option> 
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select></td>
     </tr>
     
   </table>
