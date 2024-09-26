@@ -17,7 +17,7 @@ include "functions/functions.php"
 
 
     
-    <h2>Sélectionnez les produits que vous souhaitez!</h2>
+    <h2>Voici notre carte!!</h2>
 
   <table>
     <tr>
