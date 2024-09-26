@@ -1,7 +1,3 @@
-<?php
- echo 'Hello World';//test
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
