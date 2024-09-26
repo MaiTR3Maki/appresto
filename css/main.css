@@ -38,5 +38,17 @@ h1 {
     font-size: 1em;
     color: #333;
 }
-    */
+    
+    .header button {
+        margin-left: 10px;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .header button:hover {
+        background-color: #0056b3;
+    }
     
