@@ -1,3 +1,6 @@
+<?php
+include "functions/functions.php"
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,13 +11,12 @@
 </head>
 <body>
 
-<div class="header">
-<a href="connexion.php"> <button>Connexion</button></a>
-<a href="inscription.php"> <button>Inscription</button></a>
-    </div>
+ <?php navbar();?>
 
-    <h1>Bienvenue chez Patate Douce !</h1>
-    <p>Découvrez nos produits du moment</p>
+
+
+
+ <p>Découvrez nos produits du moment</p>
 
     <div class="menu">
         <div class="menu-item">

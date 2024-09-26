@@ -1,3 +1,6 @@
+<?php
+include "functions/functions.php"
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,7 +10,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><strong>Choix du mode de consommation:</strong></h1>
+
+<?php navbar();?>
+
+    <h2><strong>Choix du mode de consommation:</strong></h2>
 
     <div class="choix">
         <h2>Sur place ou à emporter?</h2>

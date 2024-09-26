@@ -1,3 +1,6 @@
+<?php
+include "functions/functions.php"
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,6 +10,10 @@
     <title>Commander</title>
 </head>
 <body>
+
+
+ <?php navbar();?>
+
 
     
     <h2>Sélectionnez les produits que vous souhaitez!</h2>
