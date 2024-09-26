@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="left-section">
+    <div
+        <div>
             <h1>Paiement</h1>
             <h2>Commande à emporter</h2>
 
@@ -30,15 +30,15 @@
             </form>
         </div>
 
-        <div class="right-section">
-            <div class="list-items">
+        <div>
+            <div>
                 <ul>
                     <li>Nugget x 5 <span>1.5€/u</span></li>
                     <li>Big MAC x 2 <span>25.5€/u</span></li>
                 </ul>
             </div>
 
-            <div class="price-section">
+            <div ion">
                 <div>
                     <span>Prix HT</span>
                     <span>32.5€</span>
