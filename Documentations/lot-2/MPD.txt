@@ -1,4 +1,4 @@
-_User = (Id_user INT, login VARCHAR(255), pasword VARCHAR(255), email VARCHAR(255));
+_User = (Id_user INT, login VARCHAR(255), password VARCHAR(255), email VARCHAR(255));
 commande = (id_commande INT, id_etat INT, _date DATETIME, total_conso DECIMAL(15,2), type_conso BYTE, #Id_user);
 produit = (id_produit INT, libelle VARCHAR(255), prix_ht DECIMAL(15,2));
 ligne_commande = (id_ligne_commande INT, quantite INT, total_ligne_ht DECIMAL(15,2), #id_produit, #id_commande);
