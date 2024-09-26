@@ -12,10 +12,6 @@ include "functions/functions.php"
 <body>
 
  <?php navbar();?>
-
-
-
-
  <p>Découvrez nos produits du moment</p>
 
     <div class="menu">
