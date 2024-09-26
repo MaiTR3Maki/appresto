@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-
+<?php include "functions/functions.php";?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,8 @@
 </head>
 
 <body>
-    <h1>Bienvenue chez Patate Douce !</h1>
+<?php navbar();?>
+    <h2>Bienvenue chez nous !</h2>
     <p>Vous pouvez vous inscrire via ce formulaire.</p>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <div><label for="Identifiant">Identifiant</label>
