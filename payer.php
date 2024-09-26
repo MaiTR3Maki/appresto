@@ -1,3 +1,6 @@
+<?php
+include "functions/functions.php"
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -8,6 +11,8 @@
 </head>
 
 <body>
+    
+ <?php navbar();?>
     <div>
         <div>
             <h1>Paiement</h1>
