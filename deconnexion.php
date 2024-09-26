@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>Vous partez déjà ?</h1>
+<h2>Vous partez déjà ?</h2>
 <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
 
 
