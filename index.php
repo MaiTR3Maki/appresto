@@ -9,59 +9,42 @@ include "functions/functions.php"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
 </head>
+
 <body>
+
 
  <?php navbar();?>
 
 
+    
+    <h2>Voici notre carte!!</h2>
 
+  <table>
+    <tr>
+        <th>Produit</th>
+        <th>Prix</th>
+        <th>Image</th>
+    </tr>
+    <tr>
+        <td>Big Mac</td>
+        <td>9 €</td>
+        <td><img src="images/big-mac.png" alt="" height="50px" ></td>
+    </tr>
 
- <p>Découvrez nos produits du moment</p>
+    <tr>
+        <td>Mac Chicken</td>
+        <td>12 €</td>
+        <td><img src="images/big-mac.png" alt="" height="50px" ></td>
+    </tr>
 
-    <div class="menu">
-        <div class="menu-item">
-            <img src="images/big-mac.jpg" alt="Big MAC">
-            <h2>Big MAC</h2>
-            <p>Prix: 25.00€</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="images/nuggets.jpg" alt="Nugget's">
-            <h2>Nugget's</h2>
-            <p>Prix: 1.50€</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="images/mac-wrap.jpg" alt="Mac Wrap">
-            <h2>Mac Wrap</h2>
-            <p>Prix: 50.00€</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="images/frite.jpg" alt="Frite">
-            <h2>Frite</h2>
-            <p>Prix: 7.00€</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="images/280-original.jpg" alt="280™ Original">
-            <h2>280™ Original</h2>
-            <p>Prix: 30.00€</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="images/mcchicken.jpg" alt="McChicken">
-            <h2>McChicken</h2>
-            <p>Prix: 23.00€</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="images/cbo.jpg" alt="CBO">
-            <h2>CBO</h2>
-            <p>Prix: 90.00€</p>
-        </div>
+    <tr>
+        <td>Mac Fish</td>
+        <td>8 €</td>
+        <td><img src="images/big-mac.png" alt="" height="50px" ></td>
+    </tr>
+    
+  </table>
     </div>
-
 </body>
 </html>
 </html>
