@@ -15,8 +15,8 @@ include "functions/functions.php"
  <?php navbar();?>
     <div>
         <div>
-            <h1>Paiement</h1>
-            <h2>Commande à emporter</h2>
+            <h2>Paiement</h2>
+            <h3>Commande à emporter</h3>
 
             <form>
                 <label for="card-number">N° de carte</label>
