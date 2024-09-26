@@ -1,10 +1,11 @@
 <?php
 
 /**
+ * @param none
  * Affiche la barre de navigation.
  * Pour l'instant, renvoie tous les liens, mais à terme, elle affichera dynamiquement les liens selon l'état de la session.
- * @author Samuel
  * @return void
+ * @author Samuel
  */
 function navbar()
 {
