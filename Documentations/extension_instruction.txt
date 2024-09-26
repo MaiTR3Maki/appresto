@@ -1,0 +1,6 @@
+les extensions essentielles en php sont:
+
+-PHP docBlocker de neil brayfield 
+cela permet de donne auteur, paramètre d'entrée et le paramètre de sortie
+
+
