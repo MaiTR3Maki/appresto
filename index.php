@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-</head>
 <body>
+
+<div class="header">
+        <button onclick="window.location.href='#'">Connexion</button>
+        <button onclick="window.location.href='#'">Inscription</button>
+    </div>
 
     <h1>Bienvenue chez Patate Douce !</h1>
     <p>Découvrez nos produits du moment</p>
