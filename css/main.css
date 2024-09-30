@@ -431,3 +431,116 @@ h2 {
 }
 
 /* --- Fin Mes Commandes --- */
+
+
+
+
+
+
+
+
+
+
+
+
+/*---payement---*/
+.payement-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.payement-left-section {
+    width: 50%;
+}
+
+.payement-right-section {
+    width: 40%;
+    border: 1px solid #000;
+    padding: 10px;
+    margin-top: 70px;
+}
+
+.payement-h2 {
+    font-size: 24px;
+}
+
+.payement-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.payement-input[type="text"],
+.payement-input[type="number"],
+.payement-input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.payement-input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.payement-TVA-TTC {
+    max-height: 100px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: block;    
+}
+.payement-price-TVA-TTC {
+    text-align: right;
+    display: flex;
+}
+
+.payement-list-items {
+    max-height: 200px;
+    min-height: 196px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border: 2px dotted #ccc;
+    padding: 10px;
+    
+}
+
+.payement-list-items ul {
+    list-style-type: none;
+    padding: 0;
+    
+}
+
+.payement-list-items ul li {
+    justify-content: space-between;
+    margin-bottom: 10px;
+    
+}
+
+.payement-price-section {
+    margin-bottom: 20px;
+}
+
+.payement-price-section div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payement-table {
+    width: 160%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.payement-td {
+    padding: 10px;
+    text-align: left;
+}
+.payement-list-price {
+    max-height: 100px;
+    margin-bottom: 20px;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    
+}

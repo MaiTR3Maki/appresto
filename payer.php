@@ -1,6 +1,6 @@
 <?php
 include "functions/functions.php"
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,57 +13,67 @@ include "functions/functions.php"
 </head>
 
 <body>
-    
- <?php navbar();?>
-    <div>
-        <div>
-            <h2>Paiement</h2>
+
+    <?php navbar(); ?>
+    <div class="payement-container">
+        <div class="payement-left-section">
+            <h2 class="payment-h2">Paiement</h2>
             <h3>Commande à emporter</h3>
 
             <form>
-                <label for="card-number">N° de carte</label>
-                <input type="number" id="card-number" name="card-number" placeholder="Numéro de carte">
+                <label class="payement-label" for="card-number">N° de carte</label>
+                <input class="payement-input" type="number" id="card-number" name="card-number"
+                    placeholder="Numéro de carte">
 
-                <label for="card-name">Nom sur la carte</label>
-                <input type="text" id="card-name" name="card-name" placeholder="Nom">
+                <label class="payment-label" for="card-name">Nom sur la carte</label>
+                <input class="payement-input" type="text" id="card-name" name="card-name" placeholder="Nom">
 
-                <label for="cvc">Cryptogramme Visuel (CVC)</label>
-                <input type="password" id="cvc" name="cvc" placeholder="CVC">
+                <label class="payment-label" for="cvc">Cryptogramme Visuel (CVC)</label>
+                <input class="payement-input" type="password" id="cvc" name="cvc" placeholder="CVC">
 
-                <label for="expiry-date">Date D'Expiration</label>
-                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
+                <label class="payment-label" for="expiry-date">Date D'Expiration</label>
+                <input class="payement-input" type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
 
-                <input type="submit" value="Payer">
+                <input class="payement-input" type="submit" value="Payer">
             </form>
         </div>
 
-        <div>
-            <div>
+        <div class="payement-right-section">
+            <div class="payement-list-items">
                 <ul>
                     <li>Nugget x 5 <span>1.5€/u</span></li>
                     <li>Big MAC x 2 <span>25.5€/u</span></li>
                 </ul>
             </div>
 
-            <div>
-                <div>
-                    <span>Prix HT</span>
-                    <span>32.5€</span>
-                </div>
-                <div>
-                    <span>TVA 5.5%</span>
-                    <span>1.79€</span>
-                </div>
-                <div>
-                    <span>Prix TTC</span>
-                    <span>34.29€</span>
-                </div>
+
+            <div class="payement-list-price">
+                <table class="payement-table">
+                    <tr>
+                        <td class="payement-td">Prix HT</td>
+                        <td class="payement-td">32.5€</td>
+                    </tr>
+                </table>
             </div>
+
+            <div class="payement-list-price">
+                <table class="payement-table">
+                    <tr>
+                        <td class="payement-td">TVA 5.5%</td>
+                        <td class="payement-td">1.79€</td>
+                    </tr>
+                    <tr>
+                        <td class="payement-td">Prix TTC</td>
+                        <td class="payement-td">34.29€</td>
+                    </tr>
+                </table>
+            </div>
+            </table>
         </div>
     </div>
     <?php
-footer();
-?>
+    footer();
+    ?>
 </body>
 
 </html>
