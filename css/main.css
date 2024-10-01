@@ -488,8 +488,7 @@ h2 {
     cursor: pointer;
 }
 .payement-input[type="submit"]:hover {
-    background-color: #ff8b3e; 
-    
+    background-color: #ff8b3e;   
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
 }
 .payement-TVA-TTC {
