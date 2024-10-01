@@ -40,7 +40,7 @@ include "functions/functions.php"
 
         <div class="payement-right-section">
             <div class="payement-list-items">
-                <ul>
+                <ul class="price-texte">
                     <li>Nugget x 5 <span>1.5€/u</span></li>
                     <li>Big MAC x 2 <span>25.5€/u</span></li>
                 </ul>

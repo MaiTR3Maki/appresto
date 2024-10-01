@@ -479,13 +479,19 @@ h2 {
 }
 
 .payement-input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007BFF;
+    padding: 12px 455px;
+    border-radius: 5px;
+    
+    background-color: #fea86f;
     color: white;
     border: none;
     cursor: pointer;
 }
-
+.payement-input[type="submit"]:hover {
+    background-color: #ff8b3e; 
+    
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+}
 .payement-TVA-TTC {
     max-height: 100px;
     border: 1px solid #ccc;
@@ -495,6 +501,10 @@ h2 {
 .payement-price-TVA-TTC {
     text-align: right;
     display: flex;
+}
+.price-texte{
+    text-align: center;
+    margin-top: 5%;
 }
 
 .payement-list-items {
