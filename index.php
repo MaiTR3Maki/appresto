@@ -65,6 +65,21 @@ include "functions/functions.php"
                         </div>
                     </td>
                 </tr>
+                <tr>
+                <td class="produit-info">
+                    <div class="produit-gauche">
+                        <span class="produit-libelle">La salade de crevettes</span>
+                        <img src="images/plat_3.png" alt="Poulet frit" class="produit-image">
+                    </div>
+                    <div class="produit-description">
+                        <span>Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !</span>
+                    </div>
+                    <div class="produit-droite">
+                        <span class="produit-prix">8 €</span>
+                    
+                    </div>
+                </td>
+            </tr>
                 
             </table>
         </div>

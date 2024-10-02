@@ -15,8 +15,9 @@ h2 {
     font-size: 2em;
     text-align: center;
     color: #333;
-    margin: 40px 0 20px 0;
+    margin: 20px 0 20px 0;
 }
+
 
 /* --- Fin style général des pages --- */
 
@@ -128,12 +129,20 @@ h2 {
 /* --- Style des tables --- */
 
 .table-container {
-    max-height: 450px; 
-    overflow-y: auto;  
+    max-height: 420px;
     margin: auto;
-    width: 100%;
-    max-width: 800px;
+    max-width: 55%;
     padding-right: 10px; 
+    overflow-y: scroll;
+    scrollbar-color: rgb(255, 230, 214) rgb(255, 255, 255);
+    scrollbar-width: thin;
+    /* effet de fade en bas du scroll - https://stackoverflow.com/questions/22666063/how-to-fade-the-edge-of-a-div-with-just-css*/
+    --mask: linear-gradient(to bottom, 
+    rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 90%, 
+    rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0
+    ) 100% 50% / 100% 100% repeat-x;
+    -webkit-mask: var(--mask); 
+    mask: var(--mask);
 }
 
 .table-produit {
@@ -148,9 +157,19 @@ h2 {
     align-items: center; 
     padding: 15px 20px;
     background-color: #ffefe2;
-    border-radius: 50px; 
+    border-radius: 30px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+    min-height: 80px;
 }
+
+.produit-info:hover {
+    transform: scale(.98);
+    background-color:#ffe1c8;
+
+}
+
 
 .produit-gauche {
     display: flex;

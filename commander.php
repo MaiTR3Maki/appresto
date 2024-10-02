@@ -62,7 +62,6 @@ include "functions/functions.php"
                     </div>
                 </td>
             </tr>
-
             <tr>
                 <td class="produit-info">
                     <div class="produit-gauche">
@@ -71,6 +70,28 @@ include "functions/functions.php"
                     </div>
                     <div class="produit-description">
                         <span>Notre poulet est élevé en plein-air, et possède l'un des Q.I. mesuré le plus élevé jamais vu. Testez-le, vous verrez !</span>
+                    </div>
+                    <div class="produit-droite">
+                        <span class="produit-prix">8 €</span>
+                        <select class="produit-quantite" name="macfish-qty" id="macfish-qty">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="produit-info">
+                    <div class="produit-gauche">
+                        <span class="produit-libelle">La salade de crevettes</span>
+                        <img src="images/plat_3.png" alt="Poulet frit" class="produit-image">
+                    </div>
+                    <div class="produit-description">
+                        <span>Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !</span>
                     </div>
                     <div class="produit-droite">
                         <span class="produit-prix">8 €</span>
