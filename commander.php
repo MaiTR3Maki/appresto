@@ -13,14 +13,8 @@ include "functions/functions.php"
 </head>
 
 <body>
-
-
     <?php navbar(); ?>
-
-
-
     <h2>Sélectionnez les produits que vous souhaitez!</h2>
-
     <div class="table-container">
         <table class="table-produit">
             <tr>
@@ -93,9 +87,6 @@ include "functions/functions.php"
             </tr>
         </table>
     </div>
-
-
-
     </div>
     <div class="bouton-container">
     <a href="choixcommande.php"><button class="bouton-valider">Payer</button></a>

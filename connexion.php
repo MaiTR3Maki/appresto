@@ -8,14 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <title>Connexion</title>
 </head>
-
 <body>
     <?php navbar();?>
-
     <div class="connexion-container">
         <h2>De retour chez nous !</h2>
         <p>Connectez-vous pour passer une commande.</p>
-
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div>
                 <label for="Identifiant">Identifiant</label>

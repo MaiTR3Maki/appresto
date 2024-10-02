@@ -65,6 +65,7 @@ include "functions/functions.php"
                         </div>
                     </td>
                 </tr>
+                
             </table>
         </div>
 
