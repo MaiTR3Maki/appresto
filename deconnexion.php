@@ -11,13 +11,12 @@
 <body>
 <?php navbar();?>
 <h2>Vous partez déjà ?</h2>
-<p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
 
-
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <input type="submit" value="Déconnexion">
-</form>
-<a href="index.php">Retour</a>
+<div class="choix">
+    <div class="choix-boutons">
+        <a href="index.php"><button class="choix-bouton deconnecter">Se déconnecter</button></a>
+        <a href="index.php"><button class="choix-bouton annuler">Annuler</button></a>
+    </div>
 <?php
 footer();
 ?>
