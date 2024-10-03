@@ -535,7 +535,7 @@ h4 {
 .payement-input[type="submit"] {
     padding: 12px;
     border-radius: 5px;
-    
+    width: 102.5%;
     background-color: #fea86f;
     color: white;
     border: none;
