@@ -35,8 +35,18 @@ check_session_user_non_connecte();
 
                 <label class="payment-label" for="expiry-date">Date D'Expiration</label>
                 <input class="payement-input" type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
-
-                <input class="payement-input" type="submit" value="Payer">
+                <?php 
+                ?>
+            <a href="Comfirmation_payement.php">Payer</a>
+            <?php
+            /*
+            if (isset($_POST['submit'])) {
+                header("Location: Comfirmation_payement.php");
+                exit();
+            }
+                */
+            ?>
+            
             </form>
         </div>
 
