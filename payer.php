@@ -37,7 +37,7 @@ check_session_user_non_connecte();
                 <input class="payement-input" type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
                 <?php 
                 ?>
-            <a href="Comfirmation_payement.php">Payer</a>
+            <a href="mescommandes.php">Payer</a>
             <?php
             /*
             if (isset($_POST['submit'])) {
