@@ -390,7 +390,8 @@ h4 {
 }
 
 .connexion-container input[type="text"],
-.connexion-container input[type="password"] {
+.connexion-container input[type="password"],
+.connexion-container input[type="email"] {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
