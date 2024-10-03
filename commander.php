@@ -1,6 +1,9 @@
-<?php
-include "functions/functions.php"
+<?php 
+include "functions/functions.php";
+session_start(); 
+check_session_user_non_connecte();
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -14,7 +17,7 @@ include "functions/functions.php"
 
 <body>
     <?php navbar(); ?>
-    <h2>Sélectionnez les produits que vous souhaitez!</h2>
+    <h2>Bonjour <?php echo $_SESSION['pseudo']; ?>, sélectionnez les produits que vous souhaitez!</h2>
     <div class="table-container">
         <table class="table-produit">
             <tr>

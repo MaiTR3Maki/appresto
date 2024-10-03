@@ -1,6 +1,8 @@
-<?php
-include "functions/functions.php"
-    ?>
+<?php 
+include "functions/functions.php";
+session_start(); 
+check_session_user_non_connecte();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

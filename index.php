@@ -1,5 +1,24 @@
 <?php
-include "functions/functions.php"
+include "functions/functions.php";
+session_start();
+check_session_user_connecte();
+$dbh = db_connect();
+$sql_produits = 'select libelle, description, prix_ht
+from produit';
+try {
+    $sth = $dbh->prepare($sql_produits);
+    $sth->execute();
+    $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
+}
+if (count($rows) > 0) {
+    foreach ($rows as $row) {
+        echo '<td">' . $row['libelle'] . '</td>';
+    }
+} else {
+    echo "<p>Rien à afficher</p>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,6 +37,7 @@ include "functions/functions.php"
         <div class="title-section">
             <h2>Découvrez nos plats à la une !</h2>
         </div>
+
         <div class="table-container">
             <table class="table-produit">
                 <tr>
@@ -66,21 +86,21 @@ include "functions/functions.php"
                     </td>
                 </tr>
                 <tr>
-                <td class="produit-info">
-                    <div class="produit-gauche">
-                        <span class="produit-libelle">La salade de crevettes</span>
-                        <img src="images/plat_3.png" alt="Poulet frit" class="produit-image">
-                    </div>
-                    <div class="produit-description">
-                        <span>Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !</span>
-                    </div>
-                    <div class="produit-droite">
-                        <span class="produit-prix">8 €</span>
-                    
-                    </div>
-                </td>
-            </tr>
-                
+                    <td class="produit-info">
+                        <div class="produit-gauche">
+                            <span class="produit-libelle">La salade de crevettes</span>
+                            <img src="images/plat_3.png" alt="Poulet frit" class="produit-image">
+                        </div>
+                        <div class="produit-description">
+                            <span>Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !</span>
+                        </div>
+                        <div class="produit-droite">
+                            <span class="produit-prix">8 €</span>
+
+                        </div>
+                    </td>
+                </tr>
+
             </table>
         </div>
 
