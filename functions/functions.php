@@ -69,21 +69,6 @@ function footer()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function db_connect()
 {
     $dsn = 'mysql:host=localhost;dbname=appresto';  // contient le nom du serveur et de la base
