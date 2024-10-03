@@ -43,10 +43,6 @@ CREATE TABLE `commande` (
 -- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `commande` (`id_commande`, `id_etat`, `_date`, `total_conso`, `type_conso`, `Id_user`) VALUES
-(1, 1, '2023-10-01 09:30:00', 950.00, 1, 1),
-(2, 2, '2023-10-02 14:45:00', 500.00, 1, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -66,11 +62,6 @@ CREATE TABLE `ligne_commande` (
 -- Déchargement des données de la table `ligne_commande`
 --
 
-INSERT INTO `ligne_commande` (`id_ligne_commande`, `quantite`, `total_ligne_ht`, `id_produit`, `id_commande`) VALUES
-(1, 1, 800.00, 1, 1),
-(2, 1, 150.00, 3, 1),
-(3, 1, 500.00, 2, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -87,11 +78,6 @@ CREATE TABLE `produit` (
 --
 -- Déchargement des données de la table `produit`
 --
-
-INSERT INTO `produit` (`id_produit`, `libelle`, `prix_ht`) VALUES
-(1, 'Ordinateur Portable', 800.00),
-(2, 'Smartphone', 500.00),
-(3, 'Casque Audio', 150.00);
 
 -- --------------------------------------------------------
 
@@ -110,11 +96,6 @@ CREATE TABLE `_user` (
 --
 -- Déchargement des données de la table `_user`
 --
-
-INSERT INTO `_user` (`Id_user`, `login`, `password`, `email`) VALUES
-(1, 'alice', 'password123', 'alice@example.com'),
-(2, 'bob', 'securepass', 'bob@example.com'),
-(3, 'charlie', 'mypassword', 'charlie@example.com');
 
 --
 -- Index pour les tables déchargées
