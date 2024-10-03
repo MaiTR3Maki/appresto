@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 26 sep. 2024 à 09:50
+-- Généré le : jeu. 03 oct. 2024 à 11:05
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -39,10 +39,6 @@ CREATE TABLE `commande` (
   `Id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Déchargement des données de la table `commande`
---
-
 -- --------------------------------------------------------
 
 --
@@ -58,10 +54,6 @@ CREATE TABLE `ligne_commande` (
   `id_commande` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Déchargement des données de la table `ligne_commande`
---
-
 -- --------------------------------------------------------
 
 --
@@ -72,12 +64,19 @@ DROP TABLE IF EXISTS `produit`;
 CREATE TABLE `produit` (
   `id_produit` int(11) NOT NULL,
   `libelle` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `prix_ht` decimal(15,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `produit`
 --
+
+INSERT INTO `produit` (`id_produit`, `libelle`, `description`, `prix_ht`) VALUES
+(4, 'Purée classique', 'Notre purée de patate douce, parfaite en accompagnement pour vos plats.', 5.00),
+(5, 'Riz classique', 'Notre riz est le plus frais sur terre ! Il va parfaitement avec nos purées.', 4.00),
+(6, 'Le poulet frit', 'Notre poulet est élevé en plein-air, et possède l\'un des Q.I. mesuré le plus élevé jamais vu. Testez-le, vous verrez !', 8.00),
+(7, 'La salade de crevettes', 'Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !', 8.00);
 
 -- --------------------------------------------------------
 
@@ -87,15 +86,20 @@ CREATE TABLE `produit` (
 
 DROP TABLE IF EXISTS `_user`;
 CREATE TABLE `_user` (
-  `Id_user` int(11) NOT NULL,
-  `login` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL
+  `id_user` int(11) NOT NULL,
+  `pseudo` varchar(255) DEFAULT NULL,
+  `mdp` varchar(255) DEFAULT NULL,
+  `mail` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `_user`
 --
+
+INSERT INTO `_user` (`id_user`, `pseudo`, `mdp`, `mail`) VALUES
+(4, 'sss', '$2y$10$gS0FL4jhVxpV6sD1dP4dfeWDuZQ80d2lpv.erYtEZzsLr0AsCJ/sy', 'zam@zam.fr'),
+(5, '333', '$2y$10$Nw3maqn3DP3mRkluEoAm9.Y330Wwg03cIM2a1z9Q8jVT3pZv5TVYe', 'samu.kakez@gmail.com'),
+(6, 'a', '$2y$10$Sc21vn1ybSy0hyo5cvJISeV.dKD9v4TOzhAFlbhmuqsrxbC4XtJUW', 'a@a.a');
 
 --
 -- Index pour les tables déchargées
@@ -126,7 +130,7 @@ ALTER TABLE `produit`
 -- Index pour la table `_user`
 --
 ALTER TABLE `_user`
-  ADD PRIMARY KEY (`Id_user`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -148,13 +152,13 @@ ALTER TABLE `ligne_commande`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `_user`
 --
 ALTER TABLE `_user`
-  MODIFY `Id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées

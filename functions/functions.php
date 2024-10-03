@@ -39,6 +39,7 @@ function navbar()
         echo '<li><a href="inscription.php">Inscription</a></li>';
     } else {
         // Lien visible si l'utilisateur est connecté
+        echo '<li><p class="message_connecte_navbar">Connecté en tant que '.$_SESSION['pseudo'].'</p></li>';
         echo '<li><a href="deconnexion.php">Déconnexion</a></li>';
     }
 
@@ -260,4 +261,23 @@ function check_session_user_connecte()
     header("Location: commander.php");
     exit();
   }
+}
+
+function fetch_produits()
+{
+    $dbh = db_connect();
+    $sql_produits = 'select libelle, description, prix_ht
+    from produit';
+    try {
+        $sth = $dbh->prepare($sql_produits);
+        $sth->execute();
+        $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
+    }
+    if (count($rows) > 0) {
+    } else {
+        echo "<p>Rien à afficher</p>";
+    }
+    return $rows;
 }

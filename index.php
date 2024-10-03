@@ -2,23 +2,8 @@
 include "functions/functions.php";
 session_start();
 check_session_user_connecte();
-$dbh = db_connect();
-$sql_produits = 'select libelle, description, prix_ht
-from produit';
-try {
-    $sth = $dbh->prepare($sql_produits);
-    $sth->execute();
-    $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
-}
-if (count($rows) > 0) {
-    foreach ($rows as $row) {
-        echo '<td">' . $row['libelle'] . '</td>';
-    }
-} else {
-    echo "<p>Rien à afficher</p>";
-}
+$rows = fetch_produits();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,71 +25,29 @@ if (count($rows) > 0) {
 
         <div class="table-container">
             <table class="table-produit">
+                <?php
+                foreach ($rows as $row) {
+                    echo '
                 <tr>
                     <td class="produit-info">
                         <div class="produit-gauche">
-                            <span class="produit-libelle">Purée classique</span>
-                            <img src="images/plat_0.png" alt="Purée de patate douce" class="produit-image">
+                            <span class="produit-libelle">' . $row['libelle'] . '</span>
+                            <img src="images/' . $row['libelle'] . '.png" alt="' . $row['libelle'] . '" class="produit-image">
                         </div>
                         <div class="produit-description">
-                            <span>Notre purée de patate douce, parfaite en accompagnement pour vos plats.</span>
+                            <span> ' . $row['description'] . '</span>
                         </div>
                         <div class="produit-droite">
-                            <span class="produit-prix">5 €</span>
+                            <span class="produit-prix"> ' . $row['prix_ht'] . '€</span>
                         </div>
                     </td>
-                </tr>
-
-                <tr>
-                    <td class="produit-info">
-                        <div class="produit-gauche">
-                            <span class="produit-libelle">Riz classique</span>
-                            <img src="images/plat_1.png" alt="Riz" class="produit-image">
-                        </div>
-                        <div class="produit-description">
-                            <span>Notre riz est le plus frais sur terre ! Il va parfaitement avec nos purées.</span>
-                        </div>
-                        <div class="produit-droite">
-                            <span class="produit-prix">4 €</span>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="produit-info">
-                        <div class="produit-gauche">
-                            <span class="produit-libelle">Le poulet frit</span>
-                            <img src="images/plat_2.png" alt="Poulet frit" class="produit-image">
-                        </div>
-                        <div class="produit-description">
-                            <span>Notre poulet est élevé en plein-air, et possède l'un des Q.I. mesuré le plus élevé jamais vu. Testez-le, vous verrez !</span>
-                        </div>
-                        <div class="produit-droite">
-                            <span class="produit-prix">8 €</span>
-
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="produit-info">
-                        <div class="produit-gauche">
-                            <span class="produit-libelle">La salade de crevettes</span>
-                            <img src="images/plat_3.png" alt="Poulet frit" class="produit-image">
-                        </div>
-                        <div class="produit-description">
-                            <span>Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !</span>
-                        </div>
-                        <div class="produit-droite">
-                            <span class="produit-prix">8 €</span>
-
-                        </div>
-                    </td>
-                </tr>
-
+                </tr>';
+                }
+                ?>
             </table>
+
         </div>
-
-
+        <h4>Vous devez être connecté pour passer une commande.</h4>
         <?php
         footer();
         ?>

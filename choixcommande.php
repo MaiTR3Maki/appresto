@@ -10,7 +10,7 @@ check_session_user_non_connecte();
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Choix_commande</title>
 </head>
 <body>
 
