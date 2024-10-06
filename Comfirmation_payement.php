@@ -15,9 +15,14 @@ check_session_user_non_connecte();
 <body>
     
  <?php navbar();?>
-    <h2>Comfirmation du payement</h2>
-    <input type="submit" value="Payer">
-    <input type="submit" value="Abadonner">
+    <div class="choix">
+    <h2>Souhaitez-vous comfirmer le payement de votre commande ?</h2>
+    
+    <div class="choix-boutons">
+        <a href="payer.php"><button class="choix-bouton sur-place">Abadonner</button></a>
+        <a href="payer.php"><button class="choix-bouton a-emporter">Payer</button></a>
+    </div>
+</div>
     <?php
 footer();
 ?>
