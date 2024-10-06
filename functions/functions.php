@@ -266,3 +266,10 @@ function fetch_produits()
     }
     return $rows;
 }
+
+function submit_payement(){
+    if (isset($_POST['submit'])) {
+        header("Location: Comfirmation_payement.php");
+        exit();
+    }
+}

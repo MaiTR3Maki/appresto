@@ -22,7 +22,7 @@ check_session_user_non_connecte();
             <h2 class="payment-h2">Paiement</h2>
             <h3>Commande à emporter</h3>
 
-            <form>
+            <form method="post">
                 <label class="payement-label" for="card-number">N° de carte</label>
                 <input class="payement-input" type="number" id="card-number" name="card-number"
                     placeholder="Numéro de carte">
@@ -37,14 +37,10 @@ check_session_user_non_connecte();
                 <input class="payement-input" type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
                 <?php 
                 ?>
-            <a href="mescommandes.php">Payer</a>
-            <?php
-            /*
-            if (isset($_POST['submit'])) {
-                header("Location: Comfirmation_payement.php");
-                exit();
-            }
-                */
+            <button type="submit" name="submit">Payer</button>
+        </form>
+        <?php
+        submit_payement();
             ?>
             
             </form>
