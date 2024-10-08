@@ -415,7 +415,7 @@ h4 {
 .connexion-container input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #ffa366;
+    background-color: #ff957b;
     color: white;
     border: none;
     border-radius: 5px;
@@ -425,12 +425,12 @@ h4 {
 }
 
 .connexion-container input[type="submit"]:hover {
-    background-color: #ff8438;
+    background-color: #ff8668;
     transform: scale(1.05); 
 }
 
 .connexion-container a {
-    color: #FF6600;
+    color: #ff957b;
     text-decoration: none;
 }
 
