@@ -40,23 +40,31 @@ h4 {
     z-index: 1000;
 }
 
+.navbar a {
+    display: block;
+    text-align: center;
+    padding: 6px 20px;
+    margin-bottom: -5px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.8s ease; /* Transition douce lors du survol */
+    max-width: 250px;
+    width: 130px;
+}
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    overflow: hidden;
+    background-color: #ffffff2d;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour donner de la profondeur */
 }
-
-.nav-liste {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.navbar a:hover {
+    background-color: #ddd;
+    border-bottom-color: #ffb07b;
+    color: #ffb07b;
 }
-
-.nav-liste li {
-    margin: 0 10px;
-}
-
-.nav-liste li a {
+.navbar-commander-passercommander{
     display: block;
     padding: 15px 0;
     text-decoration: none;
@@ -65,10 +73,15 @@ h4 {
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease; 
 }
-.nav-liste li a:hover {
+.navbar-commander-passercommander:first-child{
+    margin-right: 15px;
+    margin-left: -5px;
+}
+.navbar-commander-passercommander:hover {
     color: #ffb07b;
     border-bottom-color: #ffb07b;
     transform: scale(1.1); 
+    margin-bottom: 5px;
 }
 
 .gauche-nav, .droite-nav {
@@ -82,6 +95,7 @@ h4 {
 
 .droite-nav {
     justify-content: flex-end;
+
 }
 
 .site-logo {
@@ -617,4 +631,35 @@ h4 {
     margin-bottom: 20px;
     border: 2px dashed #ccc;
     padding: 10px;
+}
+
+.imglogoAccueil{
+    height: 35px;
+    width: 35px;
+}
+.imglogoConnexion{
+    height: 50px;
+    width: 50px;
+    margin-bottom: -6px;
+}
+.imglogoInscription{
+    height: 35px;
+    width: 35px;
+    margin-top: 5px;
+    margin-bottom: 1px;
+}
+.imglogoDeconnexion{
+    height: 35px;
+    width: 35px;
+    margin-top: 5px;
+    margin-bottom: 1px;
+}
+.margin-right-navbar{
+    margin-right: 20px;
+}
+.margin-bottom-navbar{
+    margin-bottom: 70px;
+}
+.margin-right-navbar-connecter{
+    margin-right: 50px;
 }

@@ -1,5 +1,5 @@
-function admin() {
-    var x = document.getElementById("adminText");
+function Accueil() {
+    var x = document.getElementById("Accueil-texte");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
@@ -7,8 +7,8 @@ function admin() {
     }
 }
 
-function Questionnaire() {
-    var x = document.getElementById("Questionnaire");
+function Inscription() {
+    var x = document.getElementById("Inscription-texte");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
@@ -16,8 +16,8 @@ function Questionnaire() {
     }
  }
 
- function Dashboard() {
-    var x = document.getElementById("Dashboard");
+ function Connexion() {
+    var x = document.getElementById("Connexion-texte");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
@@ -25,35 +25,8 @@ function Questionnaire() {
     }
  }
 
- function Dashboardpiechart() {
-    var x = document.getElementById("Dashboardpiechart");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
- }
-
- function Feedback() {
-    var x = document.getElementById("Feedback");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
- }
-
- function createlogin() {
-    var x = document.getElementById("createlogin");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
- }
-
- function logout() {
-    var x = document.getElementById("logout");
+ function Deconnexion() {
+    var x = document.getElementById("Deconnexion-texte");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {

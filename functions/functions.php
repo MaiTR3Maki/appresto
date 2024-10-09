@@ -10,17 +10,23 @@
 function navbar()
 {
     echo '
+    <div class="margin-bottom-navbar">
     <header class="site-header">
+    
+    <script src="js/nav.js"></script>
         <nav class="navbar">
             <ul class="nav-liste gauche-nav">
     ';
     if (!isset($_SESSION['pseudo'])) {
-    echo '<li><a href="index.php">Accueil</a></li>';
+    echo '<a href="index.php" onmouseover="Accueil()" onmouseout="Accueil()">
+            <img id="Accueil-image" class="imglogoAccueil" src="images/logo/Accueil.png">
+            <span id="Accueil-texte" style="display: none;">Accueil</span>
+        </a>';
     }
     // Liens visibles seulement si l'utilisateur est connecté
     if (isset($_SESSION['pseudo'])) {
-        echo '<li><a href="commander.php">Passer commande</a></li>';
-        echo '<li><a href="mescommandes.php">Mes commandes</a></li>';
+        echo '<a href="commander.php" class="navbar-commander-passercommander">Passer commande</a>';
+        echo '<a href="mescommandes.php" class="navbar-commander-passercommander">Mes commandes</a>';
     }
 
     echo '
@@ -35,18 +41,28 @@ function navbar()
 
     // Liens visibles si l'utilisateur n'est pas connecté
     if (!isset($_SESSION['pseudo'])) {
-        echo '<li><a href="connexion.php">Connexion</a></li>';
-        echo '<li><a href="inscription.php">Inscription</a></li>';
+        echo '<a href="connexion.php" class="margin-right-navbar" onmouseover="Connexion()" onmouseout="Connexion()">
+            <img id="Connexion-image" class="imglogoConnexion" src="images/logo/Connexion.png">
+            <span id="Connexion-texte" style="display: none;">Connexion</span>
+        </a>';
+        echo '<a href="inscription.php" class="margin-right-navbar" onmouseover="Inscription()" onmouseout="Inscription()">
+            <img id="Inscription-image" class="imglogoInscription" src="images/logo/Inscription.png">
+            <span id="Inscription-texte" style="display: none;">Inscription</span>
+        </a>';
     } else {
         // Lien visible si l'utilisateur est connecté
-        echo '<li><p class="message_connecte_navbar">Connecté en tant que '.$_SESSION['pseudo'].'</p></li>';
-        echo '<li><a href="deconnexion.php">Déconnexion</a></li>';
+        echo '<p class="message_connecte_navbar margin-right-navbar-connecter">Connecté en tant que '.$_SESSION['pseudo'].'</p>';
+        echo '<a href="deconnexion.php" class="margin-right-navbar" onmouseover="Deconnexion()" onmouseout="Deconnexion()">
+            <img id="Deconnexion-image" class="imglogoDeconnexion" src="images/logo/se-deconnecter.png">
+            <span id="Deconnexion-texte" style="display: none;">Deconnexion</span></a>';
     }
 
     echo '
             </ul>
         </nav>
+        
     </header>
+    </div>
     ';
 }
 
