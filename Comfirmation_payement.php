@@ -16,11 +16,10 @@ check_session_user_non_connecte();
     
  <?php navbar();?>
     <div class="choix">
-    <h2>Souhaitez-vous comfirmer le payement de votre commande ?</h2>
+    <h2>Votre commande #idcommande est confirmée !</h2>
     
     <div class="choix-boutons">
-        <a href="payer.php"><button class="choix-bouton sur-place">Abadonner</button></a>
-        <a href="payer.php"><button class="choix-bouton a-emporter">Payer</button></a>
+        <a href="mescommandes.php"><button class="choix-bouton sur-place">Voir mes commandes</button></a>
     </div>
 </div>
     <?php

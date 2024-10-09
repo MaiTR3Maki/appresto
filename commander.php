@@ -18,7 +18,7 @@ $rows = fetch_produits();
 
 <body>
     <?php navbar(); ?>
-    <h2>Bonjour <?php echo $_SESSION['pseudo']; ?>, sélectionnez les produits que vous souhaitez!</h2>
+    <h2>Bonjour <u><?php echo $_SESSION['pseudo']; ?></u>, sélectionnez les produits que vous souhaitez!</h2>
 
     <div class="table-container">
         <table class="table-produit">

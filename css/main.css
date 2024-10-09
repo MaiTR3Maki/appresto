@@ -14,7 +14,7 @@ body {
 h2 {
     font-size: 2em;
     text-align: center;
-    color: #333;
+    color: #4a4a4a;
     margin: 20px 0 20px 0;
 }
 
@@ -60,14 +60,14 @@ h4 {
     display: block;
     padding: 15px 0;
     text-decoration: none;
-    color: black; 
+    color: rgb(93, 93, 93); 
     font-weight: bold;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease; 
 }
 .nav-liste li a:hover {
-    color: #FF6600;
-    border-bottom-color: #FF6600;
+    color: #ffb07b;
+    border-bottom-color: #ffb07b;
     transform: scale(1.1); 
 }
 
@@ -104,7 +104,7 @@ h4 {
 .message_connecte_navbar{
     display: block;
     text-decoration: none;
-    color: rgb(255, 155, 79); 
+    color: rgb(255, 158, 136); 
     font-weight: 520;
     transition: all 0.3s ease; 
 }
@@ -149,7 +149,7 @@ h4 {
     max-width: 55%;
     padding-right: 10px; 
     overflow-y: scroll;
-    scrollbar-color: rgb(255, 230, 214) rgb(255, 255, 255);
+    scrollbar-color: rgb(255, 218, 199) rgb(255, 255, 255);
     scrollbar-width: thin;
     /* effet de fade en bas du scroll - https://stackoverflow.com/questions/22666063/how-to-fade-the-edge-of-a-div-with-just-css*/
     --mask: linear-gradient(to bottom, 
@@ -171,7 +171,7 @@ h4 {
     justify-content: space-between; 
     align-items: center; 
     padding: 15px 20px;
-    background-color: #ffefe2;
+    background-color: #ffc18e;
     border-radius: 30px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
@@ -181,7 +181,7 @@ h4 {
 
 .produit-info:hover {
     transform: scale(.98);
-    background-color:#ffe1c8;
+    background-color:rgb(255, 185, 132);
 
 }
 
@@ -200,6 +200,7 @@ h4 {
 }
 
 .produit-libelle {
+    color: white;
     font-size: 1.2em;
     font-weight: bold;
     margin-right: 20px;
@@ -215,15 +216,15 @@ h4 {
 .produit-description {
     flex-basis: 40%;
     text-align: center;
-    font-size: 0.9em;
-    color: #666;
+    font-size: 1em;
+    color: #ffffff;
     font-weight: normal;
 }
 
 .produit-prix {
     font-size: 1.2em;
     font-weight: bold;
-    color: #FF6600;
+    color: #ffe7d7;
     margin-right: 20px;
     text-align: right;
 }
@@ -266,16 +267,16 @@ h4 {
     padding: 10px 20px; 
     font-size: 1.2em; 
     color: #fff; 
-    background-color: #ff9046d4; 
+    background-color: #ffaa78d4; 
     border: none; 
-    border-radius: 30px; 
+    border-radius: 20px; 
     cursor: pointer; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre sous le bouton */
     transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 .bouton-valider:hover {
-    background-color: #e65a00; 
+    background-color: #ffa564d4; 
     transform: scale(1.05);
 }
 
@@ -314,21 +315,21 @@ h4 {
 }
 
 .choix-bouton.sur-place {
-    background-color: #fea86f; 
+    background-color: #ffb195; 
 }
 
 .choix-bouton.sur-place:hover {
-    background-color: #ff8b3e; 
+    background-color: #ffaf7a; 
     transform: scale(1.05);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
 }
 
 .choix-bouton.a-emporter {
-    background-color: #78b9ff;
+    background-color: rgb(201, 123, 95);
 }
 
 .choix-bouton.a-emporter:hover {
-    background-color: #4da3ff; 
+    background-color: rgb(175, 87, 74); 
     transform: scale(1.05); 
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -349,6 +350,16 @@ h4 {
 
 .choix-bouton.annuler:hover {
     background-color: #d7d7d7; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.choix-bouton.mescommandes {
+    background-color: #ffd2aa;
+}
+
+.choix-bouton.mescommandes:hover {
+    background-color: #ffd5ae; 
     transform: scale(1.05); 
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -404,7 +415,7 @@ h4 {
 .connexion-container input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #ffa366;
+    background-color: #ffab7b;
     color: white;
     border: none;
     border-radius: 5px;
@@ -414,12 +425,12 @@ h4 {
 }
 
 .connexion-container input[type="submit"]:hover {
-    background-color: #ff8438;
+    background-color: #ff9568;
     transform: scale(1.05); 
 }
 
 .connexion-container a {
-    color: #FF6600;
+    color: #ff957b;
     text-decoration: none;
 }
 
@@ -606,5 +617,4 @@ h4 {
     margin-bottom: 20px;
     border: 2px dashed #ccc;
     padding: 10px;
-    
 }

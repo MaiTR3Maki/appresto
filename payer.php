@@ -37,7 +37,7 @@ check_session_user_non_connecte();
                 <input class="payement-input" type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
                 <?php 
                 ?>
-            <button type="submit" name="submit">Payer</button>
+            <button class="payement-input" type="submit" name="submit">Payer</button>
         </form>
         <?php
         submit_payement();
