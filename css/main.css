@@ -66,8 +66,8 @@ h4 {
     transition: all 0.3s ease; 
 }
 .nav-liste li a:hover {
-    color: #ff957b;
-    border-bottom-color: #ff957b;
+    color: #ffb07b;
+    border-bottom-color: #ffb07b;
     transform: scale(1.1); 
 }
 
@@ -149,7 +149,7 @@ h4 {
     max-width: 55%;
     padding-right: 10px; 
     overflow-y: scroll;
-    scrollbar-color: rgb(255, 208, 199) rgb(255, 255, 255);
+    scrollbar-color: rgb(255, 218, 199) rgb(255, 255, 255);
     scrollbar-width: thin;
     /* effet de fade en bas du scroll - https://stackoverflow.com/questions/22666063/how-to-fade-the-edge-of-a-div-with-just-css*/
     --mask: linear-gradient(to bottom, 
@@ -171,7 +171,7 @@ h4 {
     justify-content: space-between; 
     align-items: center; 
     padding: 15px 20px;
-    background-color: #ffb69b;
+    background-color: #ffc18e;
     border-radius: 30px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
@@ -181,7 +181,7 @@ h4 {
 
 .produit-info:hover {
     transform: scale(.98);
-    background-color:#ffac8e;
+    background-color:rgb(255, 185, 132);
 
 }
 
@@ -267,7 +267,7 @@ h4 {
     padding: 10px 20px; 
     font-size: 1.2em; 
     color: #fff; 
-    background-color: #ff8f78d4; 
+    background-color: #ffaa78d4; 
     border: none; 
     border-radius: 20px; 
     cursor: pointer; 
@@ -276,7 +276,7 @@ h4 {
 }
 
 .bouton-valider:hover {
-    background-color: #ff7e64d4; 
+    background-color: #ffa564d4; 
     transform: scale(1.05);
 }
 
@@ -315,21 +315,21 @@ h4 {
 }
 
 .choix-bouton.sur-place {
-    background-color: #ffa195; 
+    background-color: #ffb195; 
 }
 
 .choix-bouton.sur-place:hover {
-    background-color: #ff897a; 
+    background-color: #ffaf7a; 
     transform: scale(1.05);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
 }
 
 .choix-bouton.a-emporter {
-    background-color: rgb(201, 102, 95);
+    background-color: rgb(201, 123, 95);
 }
 
 .choix-bouton.a-emporter:hover {
-    background-color: rgb(175, 81, 74); 
+    background-color: rgb(175, 87, 74); 
     transform: scale(1.05); 
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -415,7 +415,7 @@ h4 {
 .connexion-container input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #ff957b;
+    background-color: #ffab7b;
     color: white;
     border: none;
     border-radius: 5px;
@@ -425,7 +425,7 @@ h4 {
 }
 
 .connexion-container input[type="submit"]:hover {
-    background-color: #ff8668;
+    background-color: #ff9568;
     transform: scale(1.05); 
 }
 
@@ -617,5 +617,4 @@ h4 {
     margin-bottom: 20px;
     border: 2px dashed #ccc;
     padding: 10px;
-    
 }
