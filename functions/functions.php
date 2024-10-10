@@ -113,6 +113,7 @@ function db_add_user()
     $mdp_check = isset($_POST['mdp_check']) ? $_POST['mdp_check'] : "";
     $mail = isset($_POST['mail']) ? $_POST['mail'] : "";
 
+ 
 
     //REQUETE POUR VOIR SI PSEUDO DEJA DANS LA BDD
     $sql1 = "select pseudo from _user where pseudo =:pseudo";
@@ -289,23 +290,4 @@ function submit_payement(){
         exit();
     }
 }
-// Vérifier si le formulaire a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer l'email du champ "mail" soumis
-    $email = isset($_POST['mail']) ? $_POST['mail'] : '';
-
-    // Vérification si l'email est vide
-    if (empty($email)) {
-        echo "Le champ email est obligatoire.";
-    } 
-    // Validation de l'email avec filter_var
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "L'adresse email est invalide.";
-    } 
-    // Si l'email est valide, continuer le processus (ex: ajout de l'utilisateur)
-    else {
-        echo "L'adresse email est valide.";
-        // Ici, tu peux continuer avec la logique de l'inscription ou l'ajout de l'utilisateur
-        db_add_user(); // Appel à la fonction d'ajout de l'utilisateur (si nécessaire)
-    }
-}
+ 
