@@ -294,11 +294,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer l'email
     $email = isset($_POST['mail']) ? $_POST['mail'] : '';
     } 
-    // Validation de l'email
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "L'adresse email est invalide.";
-    } 
-    // Si l'email est valide, continuer le process
-    else {
-        echo "L'adresse email est valide.";
-    }
