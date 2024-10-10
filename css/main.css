@@ -60,7 +60,6 @@ h4 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour donner de la profondeur */
 }
 .navbar a:hover {
-    background-color: #ddd;
     border-bottom-color: #ffb07b;
     color: #ffb07b;
 }
