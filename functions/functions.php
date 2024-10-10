@@ -31,7 +31,7 @@ function navbar()
 
     echo '
             </ul>
-            <div class="site-logo">
+            <div class="site-logo" >
                 <a href="index.php">
                     <img src="images/logo.png" alt="Patate Douce">
                 </a>
