@@ -47,9 +47,11 @@ h4 {
     margin-bottom: -5px;
     font-size: 20px;
     text-decoration: none;
-    transition: background-color 0.8s ease; /* Transition douce lors du survol */
-    max-width: 250px;
-    width: 130px;
+    transition: background-color 0.8s ease; 
+    max-width: 350px;
+    width: 180px;
+    transition: scale .5s ease;
+
 }
 .navbar {
     overflow: hidden;
@@ -57,7 +59,7 @@ h4 {
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour donner de la profondeur */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 .navbar a:hover {
     border-bottom-color: #ffb07b;
@@ -70,19 +72,19 @@ h4 {
     color: rgb(93, 93, 93); 
     font-weight: bold;
     border-bottom: 2px solid transparent;
-    transition: all 0.3s ease; 
+    transition: all 1s ease; 
 }
 .navbar-commander-passercommander:first-child{
     margin-right: 15px;
     margin-left: -5px;
 }
+
 .navbar-commander-passercommander:hover {
     color: #ffb07b;
     border-bottom-color: #ffb07b;
     transform: scale(1.1); 
     margin-bottom: 5px;
 }
-
 
 .gauche-nav, .droite-nav {
     display: flex;

@@ -21,10 +21,11 @@ $rows = fetch_produits();
     <h2>Bonjour <u><?php echo $_SESSION['pseudo']; ?></u>, sélectionnez les produits que vous souhaitez!</h2>
 
     <div class="table-container">
-        <table class="table-produit">
-            <?php
-            foreach ($rows as $row) {
-                echo '
+        <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
+            <table class="table-produit">
+                <?php
+                foreach ($rows as $row) {
+                    echo '
                 <tr>
                     <td class="produit-info">
                         <div class="produit-gauche">
@@ -35,7 +36,7 @@ $rows = fetch_produits();
                             <span> ' . $row['description'] . '</span>
                         </div>
                         <div class="produit-droite">
-                        <select class="produit-quantite" name="" id="">
+                        <select class="produit-quantite" name="quantites[' . $row['id_produit'] . ']">
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -49,16 +50,22 @@ $rows = fetch_produits();
                         </div>
                     </td>
                 </tr>';
-            }
+                }
 
-            ?>
-        </table>
+                ?>
+
+            </table>
     </div>
     <div class="bouton-container">
-        <a href="choixcommande.php"><button class="bouton-valider">Payer</button></a>
+        <input type="submit" name="submit" required="required" id="submit"></a>
     </div>
-
+    </form>
     <?php
+    $submit = isset($_POST["submit"]);
+    if ($submit) {
+        get_quantites();
+    }
+
     footer();
     ?>
 </body>

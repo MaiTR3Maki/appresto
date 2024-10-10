@@ -18,7 +18,7 @@ function navbar()
             <ul class="nav-liste gauche-nav">
     ';
     if (!isset($_SESSION['pseudo'])) {
-    echo '<a href="index.php" onmouseover="Accueil()" onmouseout="Accueil()">
+        echo '<a href="index.php" onmouseover="Accueil()" onmouseout="Accueil()">
             <img id="Accueil-image" class="imglogoAccueil" src="images/logo/Accueil.png">
             <span id="Accueil-texte" style="display: none;">Accueil</span>
         </a>';
@@ -51,7 +51,7 @@ function navbar()
         </a>';
     } else {
         // Lien visible si l'utilisateur est connecté
-        echo '<p class="message_connecte_navbar margin-right-navbar-connecter">Connecté en tant que '.$_SESSION['pseudo'].'</p>';
+        echo '<p class="message_connecte_navbar margin-right-navbar-connecter">Connecté en tant que ' . $_SESSION['pseudo'] . '</p>';
         echo '<a href="deconnexion.php" class="margin-right-navbar" onmouseover="Deconnexion()" onmouseout="Deconnexion()">
             <img id="Deconnexion-image" class="imglogoDeconnexion" src="images/logo/se-deconnecter.png">
             <span id="Deconnexion-texte" style="display: none;">Deconnexion</span></a>';
@@ -112,9 +112,6 @@ function db_add_user()
     $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : "";
     $mdp_check = isset($_POST['mdp_check']) ? $_POST['mdp_check'] : "";
     $mail = isset($_POST['mail']) ? $_POST['mail'] : "";
-
- 
-
     //REQUETE POUR VOIR SI PSEUDO DEJA DANS LA BDD
     $sql1 = "select pseudo from _user where pseudo =:pseudo";
     try {
@@ -142,12 +139,10 @@ function db_add_user()
         if ($mdp != $mdp_check) {
             echo "<p class='message_erreur'>Les 2 mots de passe de correspondent pas !</p>";
         }
-
         //CAS PSEUDO DEJA UTILISE
         if (count($pseudo_bdd) > 0) {
             echo "<p class='message_erreur'>Ce pseudo déja utilisé !</p>";
         }
-
         //CAS MAIL DEJA UTILISE
         if (count($mail_bdd) > 0) {
             echo "<p class='message_erreur'>Ce mail est déja utilisé !</p>";
@@ -155,13 +150,10 @@ function db_add_user()
     }
     //DANS LES AUTRES CAS ON PEUT AJOUTER L'USER A LA BDD
     else {
-
         //REQUETES QUI CONTIENT LA REQUETES SQL D'INSERTION DE L'USER
         $sql = "INSERT INTO `_user`(`id_user`, `pseudo`, `mdp`, `mail`) values (:id_user,:pseudo,:mdp,:mail)";
-
         //HACHAGE DU MDP AVANT DE LE STOCKER
         $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
-
         try {
             $sth = $dbh->prepare($sql);
             $sth->execute(array(
@@ -173,15 +165,12 @@ function db_add_user()
         } catch (PDOException $ex) {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
-
         $_GET['user_cree'] = true;
-
         echo "<p class='message_validation'>Compte créé avec succés !</p>";
         echo "<p class='message_validation'>Redirection vers login dans 2 sec !</p>";
         header("Refresh: 2; connexion.php");
     }
 }
-
 
 //FONCTION QUI GERE LA CONNEXION D'UN UTILISATEUR
 function userLogin()
@@ -251,24 +240,24 @@ function deconnexion()
 
 function check_session_user_non_connecte()
 {
-  if (!isset($_SESSION['pseudo'])) {
-    header("Location: connexion.php");
-    exit();
-  }
+    if (!isset($_SESSION['pseudo'])) {
+        header("Location: connexion.php");
+        exit();
+    }
 }
 
 function check_session_user_connecte()
 {
-  if (isset($_SESSION['pseudo'])) {
-    header("Location: commander.php");
-    exit();
-  }
+    if (isset($_SESSION['pseudo'])) {
+        header("Location: commander.php");
+        exit();
+    }
 }
 
 function fetch_produits()
 {
     $dbh = db_connect();
-    $sql_produits = 'select libelle, description, prix_ht
+    $sql_produits = 'select id_produit, libelle, description, prix_ht
     from produit';
     try {
         $sth = $dbh->prepare($sql_produits);
@@ -284,10 +273,23 @@ function fetch_produits()
     return $rows;
 }
 
-function submit_payement(){
+function submit_payement()
+{
     if (isset($_POST['submit'])) {
         header("Location: Comfirmation_payement.php");
         exit();
     }
 }
- 
+
+function get_quantites()
+{
+    if (isset($_POST['quantites'])) {
+
+        $quantites = $_POST['quantites']; // Quantites est un tableau associatif avec comme clé l'id produit et valeur la quantité du produit
+        $_SESSION['quantites_produits'] = $quantites; // On met le tableau dans la session
+
+        foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
+            echo "Produit ID : " . $produit_id . " - Quantité : " . $quantite . "<br>";
+        }
+    }
+}
