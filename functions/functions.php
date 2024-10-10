@@ -99,36 +99,51 @@ function db_connect()
     return $dbh;
 }
 
-//FONCTION QUI PERMET D'AJOUTER UN USER DANS LA BDD A L'AIDE DES SAISIES DU FORM REGISTER
+
+/**
+ * @param none
+ * rajout utilisateur
+ *
+ * @return post
+ */
 function db_add_user()
 {
-    //TRUE SI USER CREE OU RESTE FALSE SI PAS CREE
+    //va chercher la variable user_cree dans l'URL
     $_GET['user_cree'] = FALSE;
     //CONNECTION A LA BDD
     $dbh = db_connect();
     //CREATION DES VARIABLES QUI CONTIENNENT LES DONNEES SAISIES DANS LE FORM
-    $id_user = "NULL";
+    // si la variable existe, envoyée avec la méthode post, si elle n'est pas renseignée rien ne se passe 
+    $id_user = "";
     $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : "";
     $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : "";
     $mdp_check = isset($_POST['mdp_check']) ? $_POST['mdp_check'] : "";
     $mail = isset($_POST['mail']) ? $_POST['mail'] : "";
-    //REQUETE POUR VOIR SI PSEUDO DEJA DANS LA BDD
+
+ 
+    //la requete renvoie le pseudo stocker dans la table "_user" 
     $sql1 = "select pseudo from _user where pseudo =:pseudo";
     try {
+        //prepare la requete pour empecher les injections sql
         $sth = $dbh->prepare($sql1);
+        //transforme la saisie en chaine de caractère 
         $sth->execute(array(':pseudo' => $pseudo));
         $pseudo_bdd = $sth->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $ex) {
+        //en cas d'erreur revoie le message
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
 
-    //REQUETE POUR VOIR SI MAIL DEJA DANS LA BDD
+    //requête qui vérifie si l'email est présent dans la table user
     $sql2 = "select mail from _user where mail =:mail";
     try {
+        //préparation de la requête pour éviter les injections
         $sth = $dbh->prepare($sql2);
+        //la saisie devient une chaine de caractère
         $sth->execute(array(':mail' => $mail));
         $mail_bdd = $sth->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $ex) {
+        //si il y a une erreur affichage du message erreur lors de la requête sql
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
 
@@ -154,8 +169,10 @@ function db_add_user()
         $sql = "INSERT INTO `_user`(`id_user`, `pseudo`, `mdp`, `mail`) values (:id_user,:pseudo,:mdp,:mail)";
         //HACHAGE DU MDP AVANT DE LE STOCKER
         $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+        //préparation requête
         try {
             $sth = $dbh->prepare($sql);
+            //exécution des informations rentrées dans le formulaire 
             $sth->execute(array(
                 ":id_user" => $id_user,
                 ":pseudo" => $pseudo,
@@ -163,11 +180,14 @@ function db_add_user()
                 ":mail" => $mail,
             ));
         } catch (PDOException $ex) {
+            //si il y a une erreur, affichage du message erreur lors de la requête
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
+        //utilisteur cree dans l'url est vraie alors message compte crée avec succès est affiché
         $_GET['user_cree'] = true;
         echo "<p class='message_validation'>Compte créé avec succés !</p>";
         echo "<p class='message_validation'>Redirection vers login dans 2 sec !</p>";
+        //redirection vers la page de connexion
         header("Refresh: 2; connexion.php");
     }
 }
@@ -182,24 +202,29 @@ function userLogin()
     $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : "";
     $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : "";
 
-
+    //requête servant a aller chercher dans la bdd le pseudo inséré qui correspondarait au pseudo rentré dans le form
     $sql_login_pseudo = "select pseudo from _user where pseudo =:pseudo";
     try {
+        //preparation requête sql
         $sth = $dbh->prepare($sql_login_pseudo);
+        //transformer en chaine de caractère
         $sth->execute(array(':pseudo' => $pseudo));
         $resultat_login_pseudo = $sth->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $ex) {
+        //en cas d'erreur afficher erreur lors de la requête
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
-    }
-
+    };
+    //s'il trouve un login alors il recupère le mot de passe stocker dans la table _user,
     if (count($resultat_login_pseudo) > 0) {
         $sql_login_mdp = "select mdp from _user where pseudo =:pseudo";
         try {
+         // cette requete est préparer en raison du risque d'injection sql 
             $sth = $dbh->prepare($sql_login_mdp);
             $sth->execute(array(
                 ':pseudo' => $pseudo
             ));
             $resultat_login_mdp = $sth->fetch(PDO::FETCH_ASSOC);
+            //en cas d'erreur il renvoie un message d'erreur 
         } catch (PDOException $ex) {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
@@ -214,12 +239,13 @@ function userLogin()
         }
         $id_user = $resultat_id_user['id_user'];
 
-
+//si le résult mdp et la méthode password verify correspondent a l'entréee de la var mdp alors
         if ($resultat_login_mdp && password_verify($mdp, $resultat_login_mdp['mdp'])) {
             //CONNEXION REUSSIE
             $_SESSION['pseudo'] = $pseudo;
             header("location:commander.php");
         } else {
+            //si pas identique affichage message mot de passe incorrect 
             echo "<p> mot de passe incorrect ! </p>";
             echo count($resultat_login_mdp);
         }
@@ -234,50 +260,56 @@ function deconnexion()
     session_destroy(); // Détruit la session (mais pas le cookie)
     setcookie(session_name(), '', -1, '/'); // Détruit le cookie de session
     // Redirection vers index.php
-    header("Location: index.php");
+    header("Location: index.php");//qd déconnexion redirrige a la page d'accueil
     exit();
 }
-
+//verif qu'on est connectés
 function check_session_user_non_connecte()
 {
-    if (!isset($_SESSION['pseudo'])) {
-        header("Location: connexion.php");
-        exit();
-    }
+    //si la session n'existe pas
+  if (!isset($_SESSION['pseudo'])) {
+    //redirection vers la page de connexion
+    header("Location: connexion.php");
+    exit();
+  }
 }
 
 function check_session_user_connecte()
 {
-    if (isset($_SESSION['pseudo'])) {
-        header("Location: commander.php");
-        exit();
-    }
+    //si la session existe
+  if (isset($_SESSION['pseudo'])) {
+    //redirection vers la page de commande
+    header("Location: commander.php");
+    exit();
+  }
 }
-
+// la fonction va chercher les produits grâce a une requête
 function fetch_produits()
 {
-    $dbh = db_connect();
-    $sql_produits = 'select id_produit, libelle, description, prix_ht
-    from produit';
+    $dbh = db_connect(); // connexion bdd
+    $sql_produits = 'select libelle, description, prix_ht
+    from produit'; //requête sql allant chercher le nom, la description, le prix des produits de la table produit
     try {
+        //préparation requête sql
         $sth = $dbh->prepare($sql_produits);
-        $sth->execute();
-        $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $sth->execute();//exécution requête
+        $rows = $sth->fetchAll(PDO::FETCH_ASSOC);//récupération de toutes les données
     } catch (PDOException $e) {
+        //si erreur affichage message erreur lors de la requête
         die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
     }
+    //si il n'y a pas de produit affichage du message rien a afficher
     if (count($rows) > 0) {
     } else {
         echo "<p>Rien à afficher</p>";
     }
     return $rows;
 }
-
-function submit_payement()
-{
-    if (isset($_POST['submit'])) {
-        header("Location: Comfirmation_payement.php");
-        exit();
+//fonction bouton paiement
+function submit_payement(){
+    if (isset($_POST['submit'])) {//si le submit est préssé
+        header("Location: Comfirmation_payement.php");// reidrection vers la page payment
+        exit();//sortie
     }
 }
 

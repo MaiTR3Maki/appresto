@@ -1,5 +1,8 @@
 Les extensions essentielles en php sont:
 
+PHP Intelephense
+permet de faire du php, verification du code et de l'écriture.
+
 -PHP docBlocker de neil brayfield 
 Avant chaque fonction, on tape "/**" pour indiquer qu'on veut utiliser les docBlocker
 cela permet de donne auteur, paramètre d'entrée et le paramètre de sortie pour une fonction, ainsi qu'une petite description.
