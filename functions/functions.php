@@ -113,6 +113,7 @@ function db_add_user()
     $mdp_check = isset($_POST['mdp_check']) ? $_POST['mdp_check'] : "";
     $mail = isset($_POST['mail']) ? $_POST['mail'] : "";
 
+ 
 
     //REQUETE POUR VOIR SI PSEUDO DEJA DANS LA BDD
     $sql1 = "select pseudo from _user where pseudo =:pseudo";
@@ -289,8 +290,4 @@ function submit_payement(){
         exit();
     }
 }
-// Vérrif si formulaire soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer l'email
-    $email = isset($_POST['mail']) ? $_POST['mail'] : '';
-    } 
+ 

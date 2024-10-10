@@ -30,6 +30,7 @@ check_session_user_connecte();
                 db_add_user();
             }
             ?>
+            
 
             <div>
                 <label for="pseudo">Identifiant</label>
@@ -40,6 +41,8 @@ check_session_user_connecte();
                 <label for="email">Mail</label>
                 <input type="email" id="mail" pattern="+@" name="mail" value="<?php echo isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : ''; ?>"required>
             </div>
+
+
             <div>
                 <label for="mdp">Mot de passe</label>
                 <input type="password" id="mdp" name="mdp" required>
