@@ -289,23 +289,16 @@ function submit_payement(){
         exit();
     }
 }
-// Vérifier si le formulaire a été soumis
+// Vérrif si formulaire soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer l'email du champ "mail" soumis
+    // Récupérer l'email
     $email = isset($_POST['mail']) ? $_POST['mail'] : '';
-
-    // Vérification si l'email est vide
-    if (empty($email)) {
-        echo "Le champ email est obligatoire.";
     } 
-    // Validation de l'email avec filter_var
+    // Validation de l'email
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "L'adresse email est invalide.";
     } 
-    // Si l'email est valide, continuer le processus (ex: ajout de l'utilisateur)
+    // Si l'email est valide, continuer le process
     else {
         echo "L'adresse email est valide.";
-        // Ici, tu peux continuer avec la logique de l'inscription ou l'ajout de l'utilisateur
-        db_add_user(); // Appel à la fonction d'ajout de l'utilisateur (si nécessaire)
     }
-}
