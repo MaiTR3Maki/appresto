@@ -1,6 +1,6 @@
-<?php 
+<?php
 include "functions/functions.php";
-session_start(); 
+session_start();
 check_session_user_non_connecte();
 ?>
 <!DOCTYPE html>
@@ -16,11 +16,21 @@ check_session_user_non_connecte();
 
 <body>
 
-    <?php navbar(); ?>
+    <?php navbar();?>
+    
     <div class="payement-container">
         <div class="payement-left-section">
             <h2 class="payment-h2">Paiement</h2>
-            <h3>Commande à emporter</h3>
+            <?php
+            if (isset($_SESSION['type_conso'])) {
+                if ($_SESSION['type_conso'] == 1) {
+                    echo '<h3>Commande sur place (tva 5.5%)</h3>';
+                }
+                else if ($_SESSION['type_conso'] == 0) {
+                    echo '<h3>Commande à emporter (tva 10%)</h3>';
+                }
+            } ?>
+
 
             <form method="post">
                 <label class="payement-label" for="card-number">N° de carte</label>
@@ -35,31 +45,31 @@ check_session_user_non_connecte();
 
                 <label class="payment-label" for="expiry-date">Date D'Expiration</label>
                 <input class="payement-input" type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
-                <?php 
+                <?php
                 ?>
-            <button class="payement-input" type="submit" name="submit">Payer</button>
-        </form>
-        <?php
-        submit_payement();
+                <button class="payement-input" type="submit" name="submit">Payer</button>
+            </form>
+            <?php
+            submit_payement();
             ?>
-            
+
             </form>
         </div>
 
         <div class="payement-right-section">
             <div class="payement-list-items">
-                <ul class="price-texte">
-                    <li>Nugget x 5 <span>1.5€/u</span></li>
-                    <li>Big MAC x 2 <span>25.5€/u</span></li>
-                </ul>
+               
+            <?php fetch_commande()?>
+
+
             </div>
 
 
             <div class="payement-list-price">
                 <table class="payement-table">
                     <tr>
-                        <td class="payement-td">Prix HT</td>
-                        <td class="payement-td">32.5€</td>
+                        <td class="payement-td">Total HT</td>
+                        <td class="payement-td"><?php echo $_SESSION['totalprixht']; ?>€</td>
                     </tr>
                 </table>
             </div>
@@ -67,12 +77,8 @@ check_session_user_non_connecte();
             <div class="payement-list-price">
                 <table class="payement-table">
                     <tr>
-                        <td class="payement-td">TVA 5.5%</td>
-                        <td class="payement-td">1.79€</td>
-                    </tr>
-                    <tr>
                         <td class="payement-td">Prix TTC</td>
-                        <td class="payement-td">34.29€</td>
+                        <td class="payement-td"><?php echo $_SESSION['totalprixttc']; ?>€</td>
                     </tr>
                 </table>
             </div>

@@ -3,6 +3,10 @@ include "functions/functions.php";
 session_start();
 check_session_user_non_connecte();
 $rows = fetch_produits();
+$submit = isset($_POST["submit"]);
+if ($submit) {
+    get_quantites();
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,15 +61,10 @@ $rows = fetch_produits();
             </table>
     </div>
     <div class="bouton-container">
-        <input type="submit" name="submit" required="required" id="submit"></a>
+        <input class="bouton-valider" type="submit" name="submit" value="Valider" required="required" id="submit"></a>
     </div>
     </form>
     <?php
-    $submit = isset($_POST["submit"]);
-    if ($submit) {
-        get_quantites();
-    }
-
     footer();
     ?>
 </body>

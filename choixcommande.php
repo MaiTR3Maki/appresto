@@ -2,6 +2,7 @@
 include "functions/functions.php";
 session_start();
 check_session_user_non_connecte();
+get_type_conso()
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,20 +15,23 @@ check_session_user_non_connecte();
     <title>Choix_commande</title>
 </head>
 
+
+
 <body>
 
     <?php navbar(); ?>
-    <div class="choix">
-        <h2>Où souhaitez-vous consommer votre commande ?</h2>
 
+    <h2>Où souhaitez-vous consommer votre commande ?</h2>
+    <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
         <div class="choix-boutons">
-            <a href="payer.php"><button class="choix-bouton sur-place">Sur Place</button></a>
-            <a href="payer.php"><button class="choix-bouton a-emporter">À Emporter</button></a>
+            <input type="submit" class="choix-bouton sur-place" name="sur_place" value="Sur Place"></input>
+            <input type="submit" class="choix-bouton a-emporter" name="emporter"value="À Emporter"></input>
         </div>
-    </div>
+    </form>
     <?php
     footer();
     ?>
 </body>
+
 
 </html>
