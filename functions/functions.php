@@ -287,7 +287,7 @@ function check_session_user_connecte()
 function fetch_produits()
 {
     $dbh = db_connect(); // connexion bdd
-    $sql_produits = 'select libelle, description, prix_ht
+    $sql_produits = 'select id_produit, libelle, description, prix_ht
     from produit'; //requête sql allant chercher le nom, la description, le prix des produits de la table produit
     try {
         //préparation requête sql
