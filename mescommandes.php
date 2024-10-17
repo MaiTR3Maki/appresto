@@ -18,30 +18,32 @@ check_session_user_non_connecte();
 <h2>Mes Commandes Récentes</h2>
 <div class="commandes-container">
 <?php
-$sql = "SELECT id_commande, id_etat, _date, total_conso
-FROM commande"
-$result=$ ->query($sql);
-
-if ($result->num_rows >0){
-    echo"<table>
-    <thead>
-    <tr>
-        <th> date </th>
-        <th> Numéro de Commande </th>
-        <th> Produits </th>
-        <th> total </th>
-    </tr>
-    </thead>
-    <tbody>"
-    foreach($restul as $rows){
-    echo"<tr>
-        <td><td>{$row['_date']}</td>
-        <td>{$row['id_commande']}</td>
-        <td>{$row['id_etat']}</td>
-        <td>{$row['total_conso']}</td>
-      </tr>";
-   echo" </tbody>
-    </table>";
+$sql = "SELECT id_commande, id_etat, _date, total_conso FROM commande";
+$result = $dbh->query($sql);
+$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+if (count($rows) > 0) {
+    echo "<table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Numéro de Commande</th>
+                    <th>État</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>";
+    foreach ($rows as $row) {
+        echo "<tr>
+                <td>{$row['_date']}</td>
+                <td>{$row['id_commande']}</td>
+                <td>{$row['id_etat']}</td>
+                <td>{$row['total_conso']}</td>
+              </tr>";
+    }
+    echo "</tbody>
+        </table>";
+} else {
+    echo "Aucune commande trouvée.";
 }
 ?>
 </div>
