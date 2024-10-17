@@ -17,36 +17,33 @@ check_session_user_non_connecte();
 <?php navbar();?>
 <h2>Mes Commandes Récentes</h2>
 <div class="commandes-container">
+<?php
+$sql = "SELECT id_commande, id_etat, _date, total_conso
+FROM commande"
+$result=$ ->query($sql);
 
-
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Numéro de Commande</th>
-            <th>Produits</th>
-            <th>Total</th>
-            <th>Statut</th>
-        </tr>
-        <tr>
-            <td>01/10/2024</td>
-            <td>#0001</td>
-            <td>
-                - Purée classique x2<br>
-                - Poulet frit x1
-            </td>
-            <td>3000 €</td>
-            <td class="statut-en-cours">En cours</td>
-        </tr>
-        <tr>
-            <td>28/09/2024</td>
-            <td>#0002</td>
-            <td>
-                - Purée classique<br>
-            </td>
-            <td>2500 €</td>
-            <td class="statut-en-cours">En cours</td>
-        </tr>
-    </table>
+if ($result->num_rows >0){
+    echo"<table>
+    <thead>
+    <tr>
+        <th> date </th>
+        <th> Numéro de Commande </th>
+        <th> Produits </th>
+        <th> total </th>
+    </tr>
+    </thead>
+    <tbody>"
+    foreach($restul as $rows){
+    echo"<tr>
+        <td><td>{$row['_date']}</td>
+        <td>{$row['id_commande']}</td>
+        <td>{$row['id_etat']}</td>
+        <td>{$row['total_conso']}</td>
+      </tr>";
+   echo" </tbody>
+    </table>";
+}
+?>
 </div>
 
 <?php
