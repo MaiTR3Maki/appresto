@@ -120,7 +120,7 @@ function db_add_user()
     $mdp_check = isset($_POST['mdp_check']) ? $_POST['mdp_check'] : "";
     $mail = isset($_POST['mail']) ? $_POST['mail'] : "";
 
- 
+
     //la requete renvoie le pseudo stocker dans la table "_user" 
     $sql1 = "select pseudo from _user where pseudo =:pseudo";
     try {
@@ -218,7 +218,7 @@ function userLogin()
     if (count($resultat_login_pseudo) > 0) {
         $sql_login_mdp = "select mdp from _user where pseudo =:pseudo";
         try {
-         // cette requete est préparer en raison du risque d'injection sql 
+            // cette requete est préparer en raison du risque d'injection sql 
             $sth = $dbh->prepare($sql_login_mdp);
             $sth->execute(array(
                 ':pseudo' => $pseudo
@@ -238,8 +238,9 @@ function userLogin()
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
         $id_user = $resultat_id_user['id_user'];
+        $_SESSION['id_user'] = $id_user;
 
-//si le résult mdp et la méthode password verify correspondent a l'entréee de la var mdp alors
+        //si le résult mdp et la méthode password verify correspondent a l'entréee de la var mdp alors
         if ($resultat_login_mdp && password_verify($mdp, $resultat_login_mdp['mdp'])) {
             //CONNEXION REUSSIE
             $_SESSION['pseudo'] = $pseudo;
@@ -260,28 +261,28 @@ function deconnexion()
     session_destroy(); // Détruit la session (mais pas le cookie)
     setcookie(session_name(), '', -1, '/'); // Détruit le cookie de session
     // Redirection vers index.php
-    header("Location: index.php");//qd déconnexion redirrige a la page d'accueil
+    header("Location: index.php"); //qd déconnexion redirrige a la page d'accueil
     exit();
 }
 //verif qu'on est connectés
 function check_session_user_non_connecte()
 {
     //si la session n'existe pas
-  if (!isset($_SESSION['pseudo'])) {
-    //redirection vers la page de connexion
-    header("Location: connexion.php");
-    exit();
-  }
+    if (!isset($_SESSION['pseudo'])) {
+        //redirection vers la page de connexion
+        header("Location: connexion.php");
+        exit();
+    }
 }
 
 function check_session_user_connecte()
 {
     //si la session existe
-  if (isset($_SESSION['pseudo'])) {
-    //redirection vers la page de commande
-    header("Location: commander.php");
-    exit();
-  }
+    if (isset($_SESSION['pseudo'])) {
+        //redirection vers la page de commande
+        header("Location: commander.php");
+        exit();
+    }
 }
 // la fonction va chercher les produits grâce a une requête
 function fetch_produits()
@@ -292,8 +293,8 @@ function fetch_produits()
     try {
         //préparation requête sql
         $sth = $dbh->prepare($sql_produits);
-        $sth->execute();//exécution requête
-        $rows = $sth->fetchAll(PDO::FETCH_ASSOC);//récupération de toutes les données
+        $sth->execute(); //exécution requête
+        $rows = $sth->fetchAll(PDO::FETCH_ASSOC); //récupération de toutes les données
     } catch (PDOException $e) {
         //si erreur affichage message erreur lors de la requête
         die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
@@ -305,11 +306,55 @@ function fetch_produits()
     }
     return $rows;
 }
-//fonction bouton paiement
-function submit_payement(){
-    if (isset($_POST['submit'])) {//si le submit est préssé
-        header("Location: Comfirmation_payement.php");// reidrection vers la page payment
-        exit();//sortie
+
+/**
+ * cette fonction permet de rentrer dans la base de donnée 
+ * les ligne de commandes et de créer la commande associé 
+ * 
+ *
+ * @return void
+ */
+function submit_payement()
+{
+    $dbh = db_connect();
+    if (isset($_POST['submit'])) { //si le submit est préssé
+
+        $sql = "INSERT INTO `commande`( `_date`, `type_conso`, `Id_user`) VALUES (current_timestamp(),:type_conso,:id_user)";
+        //préparation requête
+        try {
+            $sth = $dbh->prepare($sql);
+            //exécution des informations rentrées dans le formulaire 
+            $sth->execute(array(
+                ":id_user" => $_SESSION['id_user'],
+                ":type_conso" => $_SESSION['type_conso'],
+            ));
+        } catch (PDOException $ex) {
+            //si il y a une erreur, affichage du message erreur lors de la requête
+            die("Erreur lors de la requête SQL : " . $ex->getMessage());
+        }
+        $idcommande = $dbh->lastInsertId();
+        print_r($_SESSION['quantites_produits']);
+        foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
+            if ($quantite >= 0) {
+                $sql = "INSERT INTO `ligne_commande`( `quantite`, `id_produit`, `id_commande`) VALUES (:quantite,:produit_id,:id_commande)";
+                //préparation requête
+                try {
+                    $sth = $dbh->prepare($sql);
+                    //exécution des informations rentrées dans le formulaire 
+                    $sth->execute(array(
+                        ":produit_id" => $produit_id,
+                        ":quantite" => $quantite,
+                        ":id_commande" => $idcommande
+
+                    ));
+                } catch (PDOException $ex) {
+                    //si il y a une erreur, affichage du message erreur lors de la requête
+                    die("Erreur lors de la requête SQL : " . $ex->getMessage());
+                }
+            }
+        }
+        header("Location: Comfirmation_payement.php"); // reidrection vers la page payment
+        exit(); //sortie
     }
 }
 
@@ -323,5 +368,58 @@ function get_quantites()
         foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
             echo "Produit ID : " . $produit_id . " - Quantité : " . $quantite . "<br>";
         }
+        header("Location: choixcommande.php");
+        exit();
     }
+}
+
+function get_type_conso()
+{
+    if (isset($_POST['sur_place'])) {
+        $_SESSION['type_conso'] = 1;
+        header("Location: payer.php");
+        exit();
+    } else if (isset($_POST['emporter'])) {
+        $_SESSION['type_conso'] = 0;
+        header("Location: payer.php");
+        exit();
+    }
+}
+
+function fetch_commande()
+{
+    if (isset($_SESSION['type_conso'])) {
+        if ($_SESSION['type_conso'] == 1) {
+            $tva = 1.055;
+        } else if ($_SESSION['type_conso'] == 0) {
+            $tva = 1.1;
+        }
+    }
+    $totalprixht = 0;
+    $dbh = db_connect(); // connexion bdd
+    $sql_produits = 'select id_produit, libelle, prix_ht from produit';
+    try {
+        //préparation requête sql
+        $sth = $dbh->prepare($sql_produits);
+        $sth->execute();
+        $rows = $sth->fetchAll(PDO::FETCH_ASSOC); //récupération de toutes les données
+    } catch (PDOException $e) {
+        //si erreur affichage message erreur lors de la requête
+        die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
+    }
+    echo '<ul class="price-texte">';
+
+    foreach ($rows as $row) {
+        foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
+            if ($row['id_produit'] == $produit_id) {
+                if ($quantite > 0) {
+                    echo '<li>' . $row['libelle'] . ' ' . $row['prix_ht'] . '€ x ' . $quantite . '</li>';
+                    $totalprixht += $row['prix_ht'] * $quantite;
+                }
+            }
+        }
+    }
+    echo '</ul>';
+    $_SESSION['totalprixht'] = $totalprixht;
+    $_SESSION['totalprixttc'] = $totalprixht * $tva;
 }
