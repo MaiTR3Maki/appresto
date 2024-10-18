@@ -68,8 +68,8 @@ check_session_user_non_connecte();
             <div class="payement-list-price">
                 <table class="payement-table">
                     <tr>
-                        <td class="payement-td">Total HT</td>
-                        <td class="payement-td"><?php echo $_SESSION['totalprixht']; ?>€</td>
+                        <td class="payement-td-left">Total HT</td>
+                        <td class="payement-td-right"><?php echo $_SESSION['totalprixht']; ?>€</td>
                     </tr>
                 </table>
             </div>
@@ -77,8 +77,8 @@ check_session_user_non_connecte();
             <div class="payement-list-price">
                 <table class="payement-table">
                     <tr>
-                        <td class="payement-td">Prix TTC</td>
-                        <td class="payement-td"><?php echo $_SESSION['totalprixttc']; ?>€</td>
+                        <td class="payement-td-left">Prix TTC</td>
+                        <td class="payement-td-right"><?php echo $_SESSION['totalprixttc']; ?>€</td>
                     </tr>
                 </table>
             </div>

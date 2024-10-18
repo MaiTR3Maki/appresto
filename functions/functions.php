@@ -413,7 +413,7 @@ function fetch_commande()
         foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
             if ($row['id_produit'] == $produit_id) {
                 if ($quantite > 0) {
-                    echo '<li>' . $row['libelle'] . ' ' . $row['prix_ht'] . '€ x ' . $quantite . '</li>';
+                    echo '<li>' . $quantite . ' x ' . $row['libelle'] . ' ' . $row['prix_ht'] . '€</li>';
                     $totalprixht += $row['prix_ht'] * $quantite;
                 }
             }

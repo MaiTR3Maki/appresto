@@ -624,7 +624,11 @@ h4 {
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-.payement-td {
+.payement-td-right {
+    padding: 10px;
+    text-align: right;
+}
+.payement-td-left {
     padding: 10px;
     text-align: left;
 }
