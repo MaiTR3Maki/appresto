@@ -1,4 +1,4 @@
-#Patate Douce - Application Web de Commande en Ligne
+#Patate Douce - Application Web de Commande en Ligne#
 
 ##⚠️ Important : Avant d'utiliser cette application, assurez-vous d'installer la base de données MySQL et les triggers associés. 
 
