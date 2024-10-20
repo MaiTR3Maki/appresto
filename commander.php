@@ -7,6 +7,7 @@ $submit = isset($_POST["submit"]);
 if ($submit) {
     get_quantites();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +24,20 @@ if ($submit) {
 <body>
     <?php navbar(); ?>
     <h2>Bonjour <u><?php echo $_SESSION['pseudo']; ?></u>, sélectionnez les produits que vous souhaitez!</h2>
-
-    <div class="table-container">
-        <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
-            <table class="table-produit">
-                <?php
-                foreach ($rows as $row) {
-                    echo '
+    <?php
+    // Affichage du message d'erreur si aucun article séléctionné
+    if (isset($_SESSION['message_erreur']) && !empty($_SESSION['message_erreur'])) {
+        echo '<p class="msg_erreur">' . $_SESSION['message_erreur'] . '</p>';
+        unset($_SESSION['message_erreur']); // On supprime le message après l'affichage
+    }
+    ?>
+    <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
+        <div class="table-et-bouton-container">
+            <div class="table-container">
+                <table class="table-produit">
+                    <?php
+                    foreach ($rows as $row) {
+                        echo '
                 <tr>
                     <td class="produit-info">
                         <div class="produit-gauche">
@@ -40,13 +48,12 @@ if ($submit) {
                             <span> ' . $row['description'] . '</span>
                         </div>
                         <div class="produit-droite">
-                        <select class="produit-quantite" name="quantites[' . $row['id_produit'] . ']">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                        <select class="produit-quantite" name="quantites[' . $row['id_produit'] . ']">';
+
+                        foreach (range(0, 10) as $i) {
+                            echo '<option value="' . $i . '">' . $i . '</option>';
+                        }
+                        echo '
                         </select>
                     </div>
                         <div class="produit-droite">
@@ -54,15 +61,15 @@ if ($submit) {
                         </div>
                     </td>
                 </tr>';
-                }
+                    }
 
-                ?>
+                    ?>
 
-            </table>
-    </div>
-    <div class="bouton-container">
-        <input class="bouton-valider" type="submit" name="submit" value="Valider" required="required" id="submit"></a>
-    </div>
+                </table>
+            </div>
+            <div class="bouton-container">
+                <input class="bouton-valider" type="submit" name="submit" value="Valider" required="required" id="submit"></a>
+            </div>
     </form>
     <?php
     footer();

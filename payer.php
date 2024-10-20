@@ -16,8 +16,8 @@ check_session_user_non_connecte();
 
 <body>
 
-    <?php navbar();?>
-    
+    <?php navbar(); ?>
+
     <div class="payement-container">
         <div class="payement-left-section">
             <h2 class="payment-h2">Paiement</h2>
@@ -25,8 +25,7 @@ check_session_user_non_connecte();
             if (isset($_SESSION['type_conso'])) {
                 if ($_SESSION['type_conso'] == 1) {
                     echo '<h3>Commande sur place (tva 5.5%)</h3>';
-                }
-                else if ($_SESSION['type_conso'] == 0) {
+                } else if ($_SESSION['type_conso'] == 0) {
                     echo '<h3>Commande à emporter (tva 10%)</h3>';
                 }
             } ?>
@@ -47,7 +46,8 @@ check_session_user_non_connecte();
                 <input class="payement-input" type="text" id="expiry-date" name="expiry-date" placeholder="MM / AAAA">
                 <?php
                 ?>
-                <button class="payement-input" type="submit" name="submit">Payer</button>
+                <button class="payement-input" type="submit" name="submit" onclick="return confirmerPaiement();">Payer</button>
+
             </form>
             <?php
             submit_payement();
@@ -58,8 +58,8 @@ check_session_user_non_connecte();
 
         <div class="payement-right-section">
             <div class="payement-list-items">
-               
-            <?php fetch_commande()?>
+
+                <?php fetch_commande() ?>
 
 
             </div>
@@ -88,6 +88,12 @@ check_session_user_non_connecte();
     <?php
     footer();
     ?>
+    <script>
+        function confirmerPaiement() {
+            return confirm("Voulez-vous vraiment effectuer le paiement de <?php echo $_SESSION['totalprixttc']; ?>€ ?");
+        }
+    </script>
+
 </body>
 
 </html>

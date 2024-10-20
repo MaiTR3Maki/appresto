@@ -5,7 +5,7 @@
  * Affiche la barre de navigation.
  * Pour l'instant, renvoie tous les liens, mais à terme, elle affichera dynamiquement les liens selon l'état de la session.
  * @return void
- * @author Samuel
+ * @author Samuel et Lucas
  */
 function navbar()
 {
@@ -84,7 +84,11 @@ function footer()
     ';
 }
 
-
+/**
+ * @param none
+ * Permet la connexion à la base de données
+ * @return dbh
+ */
 function db_connect()
 {
     $dsn = 'mysql:host=localhost;dbname=appresto';  // contient le nom du serveur et de la base
@@ -102,9 +106,9 @@ function db_connect()
 
 /**
  * @param none
- * rajout utilisateur
+ * Permet l'ajout d'un utilisateur via la page inscription
  *
- * @return post
+ * @return none
  */
 function db_add_user()
 {
@@ -192,7 +196,11 @@ function db_add_user()
     }
 }
 
-//FONCTION QUI GERE LA CONNEXION D'UN UTILISATEUR
+/**
+ * @param none
+ * Permet la connexion d'un utilisateur via la page de connexion, créé les sessions id_user et pseudo
+ * @return none
+ */
 function userLogin()
 {
     //CONNEXION A LA BDD
@@ -254,7 +262,12 @@ function userLogin()
         echo "<p> Le compte n'existe pas ! </p>";
     }
 }
-// FONCTION DE DECONNEXION 
+
+/**
+ * @param none
+ * Permet de se déconnecter, supprimant les sessions et redirigeant vers la page d'accueil
+ * @return none
+ */
 function deconnexion()
 {
     session_unset(); // Détruit toutes les variables de session
@@ -264,7 +277,13 @@ function deconnexion()
     header("Location: index.php"); //qd déconnexion redirrige a la page d'accueil
     exit();
 }
-//verif qu'on est connectés
+
+
+/**
+ * @param none
+ * Fonction présente sur chaque page, permet de vérifier si l'utilisateur est connecté ou non avant toute exécution de logique
+ * @return none
+ */
 function check_session_user_non_connecte()
 {
     //si la session n'existe pas
@@ -275,6 +294,11 @@ function check_session_user_non_connecte()
     }
 }
 
+/**
+ * @param none
+ * Fonction présente sur les pages où l'utilisateur n'est pas censé aller lorsqu'il est connecté (e.g. connexion), elle redirige vers commander par défaut
+ * @return none
+ */
 function check_session_user_connecte()
 {
     //si la session existe
@@ -284,7 +308,12 @@ function check_session_user_connecte()
         exit();
     }
 }
-// la fonction va chercher les produits grâce a une requête
+
+/**
+ * @param none
+ * Affiche tous les produits de la table produit, et retourne rows
+ * @return rows
+ */
 function fetch_produits()
 {
     $dbh = db_connect(); // connexion bdd
@@ -307,19 +336,20 @@ function fetch_produits()
     return $rows;
 }
 
-/**
- * cette fonction permet de rentrer dans la base de donnée 
+
+ /**
+ * @param none
+ * Cette fonction permet de rentrer dans la base de donnée 
  * les ligne de commandes et de créer la commande associé 
- * 
- *
- * @return void
+ * @return none
  */
 function submit_payement()
 {
-    $dbh = db_connect();
-    if (isset($_POST['submit'])) { //si le submit est préssé
 
-        $sql = "INSERT INTO `commande`( `_date`, `type_conso`, `Id_user`) VALUES (current_timestamp(),:type_conso,:id_user)";
+    if (isset($_POST['submit'])) { //si le submit est préssé
+        $dbh = db_connect();
+        $id_etat = 1; // Etat par défaut : En attente
+        $sql = "INSERT INTO `commande`( `_date`, `type_conso`, `Id_user`, `id_etat`) VALUES (current_timestamp(),:type_conso,:id_user,:id_etat)";
         //préparation requête
         try {
             $sth = $dbh->prepare($sql);
@@ -327,6 +357,7 @@ function submit_payement()
             $sth->execute(array(
                 ":id_user" => $_SESSION['id_user'],
                 ":type_conso" => $_SESSION['type_conso'],
+                ":id_etat" => $id_etat,
             ));
         } catch (PDOException $ex) {
             //si il y a une erreur, affichage du message erreur lors de la requête
@@ -358,21 +389,36 @@ function submit_payement()
     }
 }
 
+ /**
+ * @param none
+ * Cette fonction permet de récupérer les quantités des produits sélectionnées par l'utilisateur (panier) et créé une session contenant un tableau associatif
+ * @return none
+ */
 function get_quantites()
 {
     if (isset($_POST['quantites'])) {
+        $quantites = $_POST['quantites']; // Tableau associatif : id_produit => quantité
+        $total_quantity = array_sum($quantites); // Somme des quantités sélectionnées
 
-        $quantites = $_POST['quantites']; // Quantites est un tableau associatif avec comme clé l'id produit et valeur la quantité du produit
-        $_SESSION['quantites_produits'] = $quantites; // On met le tableau dans la session
-
-        foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
-            echo "Produit ID : " . $produit_id . " - Quantité : " . $quantite . "<br>";
+        if ($total_quantity > 0) {
+            $_SESSION['quantites_produits'] = $quantites; // Enregistrement dans la session
+            header("Location: choixcommande.php");
+            exit();
+        } else {
+            // Aucun article sélectionné, on stocke le message d'erreur dans la session
+            $_SESSION['message_erreur'] = 'Vous devez sélectionner au moins un article.';
+            // On redirige vers la même page pour afficher le message d'erreur
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
         }
-        header("Location: choixcommande.php");
-        exit();
     }
 }
 
+ /**
+ * @param none
+ * Permet de récupérer le type de consommation que l'utilisateur a choisi (sur place ou à emporter) et créé une session contenant un entier
+ * @return none
+ */
 function get_type_conso()
 {
     if (isset($_POST['sur_place'])) {
@@ -386,13 +432,18 @@ function get_type_conso()
     }
 }
 
+ /**
+ * @param none
+ * Permet d'afficher les produits sélectionnés par l'utilisateur, et calcule localement le prix total HT et le prix TTC
+ * @return none
+ */
 function fetch_commande()
 {
     if (isset($_SESSION['type_conso'])) {
         if ($_SESSION['type_conso'] == 1) {
             $tva = 1.055;
         } else if ($_SESSION['type_conso'] == 0) {
-            $tva = 1.1;
+            $tva = 1.10;
         }
     }
     $totalprixht = 0;
@@ -422,4 +473,30 @@ function fetch_commande()
     echo '</ul>';
     $_SESSION['totalprixht'] = $totalprixht;
     $_SESSION['totalprixttc'] = $totalprixht * $tva;
+}
+
+ /**
+ * @param none
+ * Permet d'afficher les produits sélectionnés par l'utilisateur, et calcule localement le prix total HT et le prix TTC
+ * retourne rows
+ */
+function afficher_commandes()
+{
+    $dbh = db_connect();
+
+    if (isset($_SESSION['id_user'])) {
+        try {
+            $id_user = $_SESSION['id_user'];
+            $sql = "SELECT id_commande, id_etat, _date, total_conso FROM commande WHERE id_user = :id_user";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id_user',  $id_user, PDO::PARAM_STR);
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Erreur de base de données : " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
+        return $rows;
+    }
 }

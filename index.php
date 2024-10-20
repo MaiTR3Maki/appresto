@@ -24,7 +24,7 @@ $rows = fetch_produits();
             <h2>Découvrez nos plats à la une !</h2>
         </div>
 
-        <div class="table-container">
+        <div class="table-container-non-connecte"> <!-- Nouvelle classe pour le tableau pour afficher les articles quand on n'est pas connecté -->
             <table class="table-produit">
                 <?php
                 foreach ($rows as $row) {

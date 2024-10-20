@@ -31,7 +31,7 @@ FOR EACH ROW
 BEGIN
     DECLARE v_total_conso DECIMAL(15, 2);
     DECLARE v_type_conso TINYINT;
-    DECLARE v_tva DECIMAL(4, 2);
+    DECLARE v_tva DECIMAL(4, 3);
 
     /*Récupérer la somme des totaux ligne HT*/
     SELECT SUM(total_ligne_ht) INTO v_total_conso FROM ligne_commande WHERE id_commande = NEW.id_commande;
@@ -61,7 +61,7 @@ AFTER UPDATE ON ligne_commande
 FOR EACH ROW
 BEGIN
     DECLARE v_total_conso DECIMAL(15, 2);
-    DECLARE v_tva DECIMAL(4, 2);
+    DECLARE v_tva DECIMAL(4, 3);
     DECLARE v_type_conso TINYINT;
 
     /*Récupérer la somme des totaux ligne HT*/
