@@ -1,6 +1,6 @@
-Patate Douce - Application Web de Commande en Ligne
+#Patate Douce - Application Web de Commande en Ligne
 
-⚠️ Important : Avant d'utiliser cette application, assurez-vous d'installer la base de données MySQL et les triggers associés. 
+##⚠️ Important : Avant d'utiliser cette application, assurez-vous d'installer la base de données MySQL et les triggers associés. 
 
 Ce dépôt GitHub regroupe le code source de notre application web, ainsi que sa documentation.
 
@@ -24,7 +24,7 @@ Permet aux restaurateurs de gérer les commandes reçues.
 Les restaurateurs peuvent accepter ou refuser des commandes et mettre à jour leur statut en temps réel.
 Celle-ci n'est pas encore commencée, stay tuned !
 
-🔧 Installation :
+##🔧 Installation :
 
 Base de Données :
 
