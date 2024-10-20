@@ -17,6 +17,7 @@ check_session_user_non_connecte();
  <?php navbar();?>
     <div class="choix">
     <h2>Votre commande #idcommande est confirmée !</h2>
+    <p>Vous recevrez un email de confirmation dès que votre commande sera validée.</p>
     
     <div class="choix-boutons">
         <a href="mescommandes.php"><button class="choix-bouton sur-place">Voir mes commandes</button></a>
