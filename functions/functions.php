@@ -337,7 +337,7 @@ function fetch_produits()
 }
 
 
- /**
+/**
  * @param none
  * Cette fonction permet de rentrer dans la base de donnée 
  * les ligne de commandes et de créer la commande associé 
@@ -345,51 +345,51 @@ function fetch_produits()
  */
 function submit_payement()
 {
-
-    if (isset($_POST['submit'])) { //si le submit est préssé
+    if (isset($_POST['submit'])) {
         $dbh = db_connect();
-        $id_etat = 1; // Etat par défaut : En attente
-        $sql = "INSERT INTO `commande`( `_date`, `type_conso`, `Id_user`, `id_etat`) VALUES (current_timestamp(),:type_conso,:id_user,:id_etat)";
-        //préparation requête
+        $id_etat = 1; // État par défaut : En attente
+        $sql = "INSERT INTO `commande`( `_date`, `type_conso`, `Id_user`, `id_etat`) VALUES (current_timestamp(), :type_conso, :id_user, :id_etat)";
         try {
             $sth = $dbh->prepare($sql);
-            //exécution des informations rentrées dans le formulaire 
             $sth->execute(array(
                 ":id_user" => $_SESSION['id_user'],
                 ":type_conso" => $_SESSION['type_conso'],
                 ":id_etat" => $id_etat,
             ));
         } catch (PDOException $ex) {
-            //si il y a une erreur, affichage du message erreur lors de la requête
+
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
         $idcommande = $dbh->lastInsertId();
-        print_r($_SESSION['quantites_produits']);
+        $_SESSION['id_commande_confirmee'] = $idcommande; // Stocker l'ID de la commande dans la session
+
+
+
         foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
-            if ($quantite >= 0) {
-                $sql = "INSERT INTO `ligne_commande`( `quantite`, `id_produit`, `id_commande`) VALUES (:quantite,:produit_id,:id_commande)";
-                //préparation requête
+            if ($quantite > 0) {
+                $sql = "INSERT INTO `ligne_commande`( `quantite`, `id_produit`, `id_commande`) VALUES (:quantite, :produit_id, :id_commande)";
+
                 try {
                     $sth = $dbh->prepare($sql);
-                    //exécution des informations rentrées dans le formulaire 
+
                     $sth->execute(array(
                         ":produit_id" => $produit_id,
                         ":quantite" => $quantite,
                         ":id_commande" => $idcommande
-
                     ));
                 } catch (PDOException $ex) {
-                    //si il y a une erreur, affichage du message erreur lors de la requête
+
                     die("Erreur lors de la requête SQL : " . $ex->getMessage());
                 }
             }
         }
-        header("Location: Comfirmation_payement.php"); // reidrection vers la page payment
-        exit(); //sortie
+        header("Location: confirmation_paiement.php"); // redirection vers la page de confirmation
+        exit();
     }
 }
 
- /**
+
+/**
  * @param none
  * Cette fonction permet de récupérer les quantités des produits sélectionnées par l'utilisateur (panier) et créé une session contenant un tableau associatif
  * @return none
@@ -414,7 +414,7 @@ function get_quantites()
     }
 }
 
- /**
+/**
  * @param none
  * Permet de récupérer le type de consommation que l'utilisateur a choisi (sur place ou à emporter) et créé une session contenant un entier
  * @return none
@@ -432,7 +432,7 @@ function get_type_conso()
     }
 }
 
- /**
+/**
  * @param none
  * Permet d'afficher les produits sélectionnés par l'utilisateur, et calcule localement le prix total HT et le prix TTC
  * @return none
@@ -475,7 +475,7 @@ function fetch_commande()
     $_SESSION['totalprixttc'] = $totalprixht * $tva;
 }
 
- /**
+/**
  * @param none
  * Permet d'afficher les produits sélectionnés par l'utilisateur, et calcule localement le prix total HT et le prix TTC
  * retourne rows
