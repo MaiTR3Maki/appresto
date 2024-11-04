@@ -422,11 +422,11 @@ function get_quantites()
 function get_type_conso()
 {
     if (isset($_POST['sur_place'])) {
-        $_SESSION['type_conso'] = 1;
+        $_SESSION['type_conso'] = 0;
         header("Location: payer.php");
         exit();
     } else if (isset($_POST['emporter'])) {
-        $_SESSION['type_conso'] = 0;
+        $_SESSION['type_conso'] = 1;
         header("Location: payer.php");
         exit();
     }
@@ -471,8 +471,8 @@ function fetch_commande()
         }
     }
     echo '</ul>';
-    $_SESSION['totalprixht'] = $totalprixht;
-    $_SESSION['totalprixttc'] = $totalprixht * $tva;
+    $_SESSION['totalprixht'] = number_format((float)$totalprixht, 2, '.', '');
+    $_SESSION['totalprixttc'] = number_format((float)$totalprixht * $tva, 2, '.', '');
 }
 
 /**

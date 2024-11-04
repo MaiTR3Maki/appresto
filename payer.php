@@ -23,10 +23,10 @@ check_session_user_non_connecte();
             <h2 class="payment-h2">Paiement</h2>
             <?php
             if (isset($_SESSION['type_conso'])) {
-                if ($_SESSION['type_conso'] == 1) {
-                    echo '<h3>Commande sur place (tva 5.5%)</h3>';
-                } else if ($_SESSION['type_conso'] == 0) {
-                    echo '<h3>Commande à emporter (tva 10%)</h3>';
+                if ($_SESSION['type_conso'] == 0) {
+                    echo '<h3>Commande sur place (tva 10%)</h3>';
+                } else if ($_SESSION['type_conso'] == 1) {
+                    echo '<h3>Commande à emporter (tva 5.5%)</h3>';
                 }
             } ?>
 
