@@ -156,15 +156,15 @@ function db_add_user()
 
         //CAS OU LES 2 MDP SAISIS NE CORRESPONDENT PAS
         if ($mdp != $mdp_check) {
-            echo "<p class='message_erreur'>Les 2 mots de passe de correspondent pas !</p>";
+            echo "<p class='msg_erreur'>Les 2 mots de passe de correspondent pas !</p>";
         }
         //CAS PSEUDO DEJA UTILISE
         if (count($pseudo_bdd) > 0) {
-            echo "<p class='message_erreur'>Ce pseudo déja utilisé !</p>";
+            echo "<p class='msg_erreur'>Ce pseudo déja utilisé !</p>";
         }
         //CAS MAIL DEJA UTILISE
         if (count($mail_bdd) > 0) {
-            echo "<p class='message_erreur'>Ce mail est déja utilisé !</p>";
+            echo "<p class='msg_erreur'>Ce mail est déja utilisé !</p>";
         }
     }
     //DANS LES AUTRES CAS ON PEUT AJOUTER L'USER A LA BDD
@@ -255,11 +255,11 @@ function userLogin()
             header("location:commander.php");
         } else {
             //si pas identique affichage message mot de passe incorrect 
-            echo "<p> mot de passe incorrect ! </p>";
+            echo "<p class='msg_erreur'> Mot de passe incorrect ! </p>";
             echo count($resultat_login_mdp);
         }
     } else {
-        echo "<p> Le compte n'existe pas ! </p>";
+        echo "<p class='msg_erreur'> Le compte n'existe pas ! </p>";
     }
 }
 
@@ -331,7 +331,7 @@ function fetch_produits()
     //si il n'y a pas de produit affichage du message rien a afficher
     if (count($rows) > 0) {
     } else {
-        echo "<p>Rien à afficher</p>";
+        echo "<p class='msg_erreur'>Rien à afficher</p>";
     }
     return $rows;
 }
