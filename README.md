@@ -25,13 +25,14 @@ Celle-ci n'est pas encore commencée, stay tuned !
 
 ## 🔧 Installation :
 
-Base de Données :
+Pour utiliser notre application web, vous devez avoir une base de données MySQL configurée et un serveur apache (Vous pouvez utiliser XAMPP !).
 
-Importez le script de création de la base de données fourni dans le dossier /sql/appresto.sql
+Téléchargez notre application web depuis le dépôt GitHub et copiez-la sur votre serveur (le dossier htdocs si vous être sur XAMPP)
+
+Importez le script de création de la base de données fourni dans le dossier sql/appresto.sql
+
 Assurez-vous que les tables et les données initiales sont correctement créées.
-Triggers :
 
-Les triggers sont essentiels pour le calcul automatique des totaux.
-Exécutez les scripts de création des triggers également disponibles dans le dossier /sql/Triggers.sql
+Lancez la page index.php pour accéder à l'interface web de Patate Douce, vous pouvez créer un compte chez nous et commander !
 
 Merci d'utiliser Patate Douce ! 🍠 Bon appétit !
