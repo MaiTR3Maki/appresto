@@ -360,10 +360,8 @@ function submit_payement()
 
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
+
         $idcommande = $dbh->lastInsertId();
-        $_SESSION['id_commande_confirmee'] = $idcommande; // Stocker l'ID de la commande dans la session
-
-
 
         foreach ($_SESSION['quantites_produits'] as $produit_id => $quantite) {
             if ($quantite > 0) {
@@ -383,6 +381,10 @@ function submit_payement()
                 }
             }
         }
+        $_SESSION['id_commande_confirmee'] = $idcommande; 
+        $_SESSION['date_heure_paiement'] = date('d-m-Y') . " à " . date('H:i');   
+
+
         header("Location: confirmation_paiement.php"); // redirection vers la page de confirmation
         exit();
     }
@@ -498,5 +500,12 @@ function afficher_commandes()
             echo "Erreur : " . $e->getMessage();
         }
         return $rows;
+    }
+}
+
+function check_commande_vide(){
+    if($_SESSION['quantites_produits'] == null){
+        header("Location: index.php");
+        exit();
     }
 }

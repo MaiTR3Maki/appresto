@@ -2,6 +2,7 @@
 include "functions/functions.php";
 session_start(); 
 check_session_user_non_connecte();
+check_commande_vide();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,6 +18,8 @@ check_session_user_non_connecte();
  <?php navbar();?>
     <div class="choix">
     <h2>Votre commande n° <?php echo $_SESSION['id_commande_confirmee']?> est confirmée !</h2>
+    <h3>Total : <?php echo $_SESSION['totalprixttc']; ?>€</h3>
+    <h3>Réglée le <?php echo $_SESSION['date_heure_paiement']; ?></h3>
     <p>Vous recevrez un email de confirmation dès que votre commande sera validée.</p>
     
     <div class="choix-boutons">

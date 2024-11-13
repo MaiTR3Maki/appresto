@@ -2,7 +2,8 @@
 include "functions/functions.php";
 session_start();
 check_session_user_non_connecte();
-get_type_conso()
+get_type_conso();
+check_commande_vide();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
