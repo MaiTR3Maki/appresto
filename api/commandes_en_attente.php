@@ -38,16 +38,18 @@ foreach ($commandes as &$commande) {
     }
     $commande['lignes_commande'] = $lignes_commande;
 }
-
-/*
-foreach ($commandes as $commande) {
-    $tableau[1] = $commande['id_commande'];
-    foreach ($lignes_commande as $ligne_commande) {
-       
-    }
-}*/
-
-
 $json = json_encode($commandes);
 header("Content-type: application/json; charset=utf-8");
+$file =fopen('commandes_en_attente.json', 'w');
+if ($file==false){
+    echo"erreur: impossible de créer ou d'ouvrir le fichier .json";
+    exit;
+}
+fwrite($file,$json);
+if (fwrite($file, $json) === false){
+    echo"Erreur: Impossible d'écrire le fichier json";
+    fclose($file);
+    exit;
+}
+fclose($file);
 echo $json;
