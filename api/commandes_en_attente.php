@@ -1,4 +1,8 @@
 <?php
+/**
+ * @param none
+ * Cette api encode les données des commandes en attente dans un tableau sous format JSON, et renvoie les données sous format JSON.
+ */
 include '../functions/functions.php';
 
 $dbh = db_connect();
