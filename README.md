@@ -25,7 +25,7 @@ Pour utiliser notre application web, vous devez avoir une base de données MySQL
 
 Téléchargez notre application web depuis le dépôt GitHub et copiez-la sur votre serveur (le dossier htdocs si vous être sur XAMPP).
 
-Importez le script de création de la base de données fourni dans le dossier sql/appresto.sql, ou cliquez [ici](sql/appresto.sql)
+Importez le script de création de la base de données fourni dans le dossier sql/appresto.sql, ou cliquez [ici](sql/appresto.sql).
 
 Assurez-vous que les tables et les données initiales sont correctement créées.
 
