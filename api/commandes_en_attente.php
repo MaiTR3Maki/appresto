@@ -53,5 +53,5 @@ if (fwrite($file, $json) === false){
     fclose($file);
     exit;
 }
-fclose($file);*/
-
+fclose($file);
+*/
