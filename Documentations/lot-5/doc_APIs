@@ -25,8 +25,11 @@ Ces APIs ne renvoient rien pour l'instant, elles ne font que mettre à jour la B
 
 - commandes_en_attente.php : Récupère toutes les commandes en attente (id_etat = 1), ainsi que leurs lignes de commandes liées, puis encode ces données dans un tableau sous format JSON, et renvoie les données sous format JSON.
 
+Ces données sous format JSON sont constituées des informations sur les commandes en attente, ainsi que les informations relatives aux produits associés à chaque commande, il y a en fait deux tableaux imbriqués.
+
 Voici un extrait du fichier JSON : 
 
+```json
 [
     {
         "id_commande": 38,
@@ -48,6 +51,7 @@ Voici un extrait du fichier JSON :
         ]
     },
 
-(…)
+    (…)
+```
 
 Le fichier JSON entier se trouve dans le même dossier que la documentation que vous êtes en train de lire.
