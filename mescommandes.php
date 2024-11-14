@@ -20,7 +20,7 @@ $rows = afficher_commandes();
     <div class="commandes-container">
         <?php
         $etat_commandes = [ //tableau associatif pour afficher les états des commandes. Pour l'instant, on n'a qu'un seul état.
-            1 => 'En cours',
+            1 => 'En attente',
             2 => 'Acceptée',
             3 => 'Refusée',
             4 => 'Terminée'
