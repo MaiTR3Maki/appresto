@@ -12,9 +12,12 @@ Permet aux clients de passer des commandes en ligne.
 Les clients peuvent sélectionner les produits disponibles, choisir les quantités souhaitées et passer commande.
 
 - Client lourd java pour les restaurateurs :
+
 Permet aux restaurateurs d'accepter, modifier, refuser ou terminer les commandes en cours. 
 
-- APIs faisant le lien entre l'interface web et le client lourd.
+- APIs faisant le lien entre l'interface web et le client lourd : 
+
+Permet la communication entre le client et le serveur.
 
 ## 🔧 Installation :
 
