@@ -1,0 +1,88 @@
+[
+    {
+        "id_commande": 38,
+        "_date": "2024-11-07 11:30:13",
+        "id_etat": 1,
+        "sum(ligne_commande.quantite)": "7",
+        "total_conso": "35.20",
+        "lignes_commande": [
+            {
+                "id_ligne_commande": 124,
+                "libelle": "Pur\u00e9e classique",
+                "quantite": 4
+            },
+            {
+                "id_ligne_commande": 125,
+                "libelle": "Riz classique",
+                "quantite": 3
+            }
+        ]
+    },
+    {
+        "id_commande": 39,
+        "_date": "2024-11-07 11:30:34",
+        "id_etat": 1,
+        "sum(ligne_commande.quantite)": "27",
+        "total_conso": "209.00",
+        "lignes_commande": [
+            {
+                "id_ligne_commande": 126,
+                "libelle": "Pur\u00e9e classique",
+                "quantite": 7
+            },
+            {
+                "id_ligne_commande": 127,
+                "libelle": "Le maf\u00e9 patate douce",
+                "quantite": 10
+            },
+            {
+                "id_ligne_commande": 128,
+                "libelle": "Jus carotte et patate douce",
+                "quantite": 10
+            }
+        ]
+    },
+    {
+        "id_commande": 38,
+        "_date": "2024-11-07 11:30:13",
+        "id_etat": 1,
+        "sum(ligne_commande.quantite)": "7",
+        "total_conso": "35.20",
+        "lignes_commande": [
+            {
+                "id_ligne_commande": 124,
+                "libelle": "Pur\u00e9e classique",
+                "quantite": 4
+            },
+            {
+                "id_ligne_commande": 125,
+                "libelle": "Riz classique",
+                "quantite": 3
+            }
+        ]
+    },
+    {
+        "id_commande": 39,
+        "_date": "2024-11-07 11:30:34",
+        "id_etat": 1,
+        "sum(ligne_commande.quantite)": "27",
+        "total_conso": "209.00",
+        "lignes_commande": [
+            {
+                "id_ligne_commande": 126,
+                "libelle": "Pur\u00e9e classique",
+                "quantite": 7
+            },
+            {
+                "id_ligne_commande": 127,
+                "libelle": "Le maf\u00e9 patate douce",
+                "quantite": 10
+            },
+            {
+                "id_ligne_commande": 128,
+                "libelle": "Jus carotte et patate douce",
+                "quantite": 10
+            }
+        ]
+    }
+]

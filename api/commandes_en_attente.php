@@ -40,7 +40,9 @@ foreach ($commandes as &$commande) {
 }
 $json = json_encode($commandes);
 header("Content-type: application/json; charset=utf-8");
-$file =fopen('commandes_en_attente.json', 'w');
+echo $json;
+/*
+$file =fopen('../Documentations/lot-5/commandes_en_attente.json', 'w');
 if ($file==false){
     echo"erreur: impossible de créer ou d'ouvrir le fichier .json";
     exit;
@@ -51,5 +53,5 @@ if (fwrite($file, $json) === false){
     fclose($file);
     exit;
 }
-fclose($file);
-echo $json;
+fclose($file);*/
+
