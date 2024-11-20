@@ -11,6 +11,7 @@ $rows = afficher_commandes();
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <title>Mes Commandes</title>
 </head>
 
@@ -19,7 +20,7 @@ $rows = afficher_commandes();
     <h2>Mes Commandes Récentes</h2>
     <div class="commandes-container">
         <?php
-        $etat_commandes = [ //tableau associatif pour afficher les états des commandes. Pour l'instant, on n'a qu'un seul état.
+        $etat_commandes = [ //tableau associatif pour afficher les états des commandes.
             1 => 'En attente',
             2 => 'Acceptée',
             3 => 'Refusée',

@@ -3,6 +3,7 @@
  * @param $id_commande
  * Cette api permet de mettre à jour l'état de la commande en "refusée"
  */
+session_start();
 include '../functions/functions.php';
 
 $dbh = db_connect();

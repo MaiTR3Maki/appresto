@@ -18,7 +18,7 @@ Ceux-ci prennent en paramètre l'id de la commande via la méthode GET (url), et
 
 - commande_terminer.php : Met le statut de la commande en "terminée" (id_etat = 4)
 
-Ces APIs ne renvoient rien pour l'instant, elles ne font que mettre à jour la BDD
+Ces APIs ne renvoient rien pour l'instant, elles ne font que mettre à jour la BDD.
 
 
 -- L'API qui encode les données des commandes provenant de la BDD en format JSON. --

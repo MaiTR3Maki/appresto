@@ -45,6 +45,7 @@ $rows = fetch_produits();
                 </tr>';
                 }
                 ?>
+                <tr><td><h4>Restez à l'écoute pour les produits à venir !</h4></td></tr>
             </table>
 
         </div>

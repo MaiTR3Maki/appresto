@@ -59,10 +59,7 @@ check_commande_vide();
 
         <div class="payement-right-section">
             <div class="payement-list-items">
-
                 <?php fetch_commande() ?>
-
-
             </div>
 
 

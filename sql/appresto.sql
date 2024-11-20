@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 07 nov. 2024 à 11:46
+-- Généré le : jeu. 21 nov. 2024 à 00:52
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -29,7 +29,6 @@ USE `appresto`;
 -- Structure de la table `commande`
 --
 
-DROP TABLE IF EXISTS `commande`;
 CREATE TABLE `commande` (
   `id_commande` int(11) NOT NULL,
   `id_etat` int(11) DEFAULT NULL,
@@ -39,21 +38,12 @@ CREATE TABLE `commande` (
   `Id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Déchargement des données de la table `commande`
---
-
-INSERT INTO `commande` (`id_commande`, `id_etat`, `_date`, `total_conso`, `type_conso`, `Id_user`) VALUES
-(38, 1, '2024-11-07 11:30:13', 35.20, 0, 6),
-(39, 1, '2024-11-07 11:30:34', 209.00, 0, 6);
-
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `ligne_commande`
 --
 
-DROP TABLE IF EXISTS `ligne_commande`;
 CREATE TABLE `ligne_commande` (
   `id_ligne_commande` int(11) NOT NULL,
   `quantite` int(11) DEFAULT NULL,
@@ -63,20 +53,8 @@ CREATE TABLE `ligne_commande` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `ligne_commande`
---
-
-INSERT INTO `ligne_commande` (`id_ligne_commande`, `quantite`, `total_ligne_ht`, `id_produit`, `id_commande`) VALUES
-(124, 4, 20.00, 4, 38),
-(125, 3, 12.00, 5, 38),
-(126, 7, 35.00, 4, 39),
-(127, 10, 125.00, 10, 39),
-(128, 10, 30.00, 11, 39);
-
---
 -- Déclencheurs `ligne_commande`
 --
-DROP TRIGGER IF EXISTS `after_ligne_insert`;
 DELIMITER $$
 CREATE TRIGGER `after_ligne_insert` AFTER INSERT ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_total_conso DECIMAL(15, 2);
@@ -104,7 +82,6 @@ CREATE TRIGGER `after_ligne_insert` AFTER INSERT ON `ligne_commande` FOR EACH RO
 END
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `after_ligne_update`;
 DELIMITER $$
 CREATE TRIGGER `after_ligne_update` AFTER UPDATE ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_total_conso DECIMAL(15, 2);
@@ -132,7 +109,6 @@ CREATE TRIGGER `after_ligne_update` AFTER UPDATE ON `ligne_commande` FOR EACH RO
 END
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `before_ligne_insert`;
 DELIMITER $$
 CREATE TRIGGER `before_ligne_insert` BEFORE INSERT ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_prix_ht DECIMAL(15, 2);
@@ -142,7 +118,6 @@ CREATE TRIGGER `before_ligne_insert` BEFORE INSERT ON `ligne_commande` FOR EACH 
 END
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `before_ligne_update`;
 DELIMITER $$
 CREATE TRIGGER `before_ligne_update` BEFORE UPDATE ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_prix_ht DECIMAL(15, 2);
@@ -159,7 +134,6 @@ DELIMITER ;
 -- Structure de la table `produit`
 --
 
-DROP TABLE IF EXISTS `produit`;
 CREATE TABLE `produit` (
   `id_produit` int(11) NOT NULL,
   `libelle` varchar(255) DEFAULT NULL,
@@ -172,14 +146,15 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`id_produit`, `libelle`, `description`, `prix_ht`) VALUES
-(4, 'Purée classique', 'Notre purée de patate douce, parfaite en accompagnement pour vos plats.', 5.00),
-(5, 'Riz classique', 'Notre riz est le plus frais sur terre ! Il va parfaitement avec nos purées.', 4.00),
-(6, 'Le poulet frit', 'Notre poulet est élevé en plein-air, et possède l\'un des Q.I. mesuré le plus élevé jamais vu. Testez-le, vous verrez !', 8.00),
-(7, 'La salade de crevettes', 'Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !', 8.00),
-(8, 'Les gnocchis ', 'Nos gnocchis à la patate douce sont ronds et doux comme rondoudou !', 5.00),
-(9, 'Les pâtes fraîches', 'Nos pâtes proviennent de blé 100% français qui a été nominé comme le blé le plus heureux du monde !', 4.00),
-(10, 'Le mafé patate douce', 'Notre mafé spécialement préparé par nos chefs avec amour est à tomber par terre !', 12.50),
-(11, 'Jus carotte et patate douce', 'Notre jus de patate douce est naturellement anti-oxydant et sans sucre ajouté ! Il se marie bien avec notre mafé.', 3.00);
+(0, 'La Purée classique', 'Notre purée de patate douce, parfaite en accompagnement pour vos plats.', 5.00),
+(1, 'Le Riz classique', 'Notre riz est le plus frais sur terre ! Il va parfaitement avec nos purées.', 4.00),
+(2, 'Le Poulet Frit', 'Notre poulet est élevé en plein-air, et possède l\'un des Q.I. mesuré le plus élevé jamais vu. Testez-le, vous verrez !', 8.00),
+(3, 'La Salade de Crevettes', 'Nos crevettes fraîches sont succulentes, pêchées à Limayrac directement !', 8.00),
+(4, 'Les Gnocchis Patate Douce', 'Nos gnocchis à la patate douce sont ronds et doux comme rondoudou !', 5.00),
+(5, 'Les Pâtes Fraîches', 'Nos pâtes proviennent de patates douces élevées avec amour en Irlande !', 4.00),
+(6, 'Le Mafé Patate Douce', 'Notre mafé spécialement préparé par nos chefs avec amour est à tomber par terre !', 12.50),
+(7, 'Le Jus à la carotte', 'Notre jus de carotte est naturellement anti-oxydant et sans sucre ajouté !', 3.00),
+(8, 'Le yaourt patate douce', 'Savourez notre yaourt à la patate douce : onctueux, naturellement doux, et terriblement gourmand.', 4.50);
 
 -- --------------------------------------------------------
 
@@ -187,24 +162,12 @@ INSERT INTO `produit` (`id_produit`, `libelle`, `description`, `prix_ht`) VALUES
 -- Structure de la table `_user`
 --
 
-DROP TABLE IF EXISTS `_user`;
 CREATE TABLE `_user` (
   `id_user` int(11) NOT NULL,
   `pseudo` varchar(255) DEFAULT NULL,
   `mdp` varchar(255) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Déchargement des données de la table `_user`
---
-
-INSERT INTO `_user` (`id_user`, `pseudo`, `mdp`, `mail`) VALUES
-(4, 'sss', '$2y$10$gS0FL4jhVxpV6sD1dP4dfeWDuZQ80d2lpv.erYtEZzsLr0AsCJ/sy', 'zam@zam.fr'),
-(5, '333', '$2y$10$Nw3maqn3DP3mRkluEoAm9.Y330Wwg03cIM2a1z9Q8jVT3pZv5TVYe', 'samu.kakez@gmail.com'),
-(6, 'a', '$2y$10$Sc21vn1ybSy0hyo5cvJISeV.dKD9v4TOzhAFlbhmuqsrxbC4XtJUW', 'a@a.a'),
-(7, 'b', '$2y$10$96tw/432C1FvVLW46G1VAOaj7bAWYsIkG5W3WXothwm3T8kqxMJy6', 'sadmin@gmail.com'),
-(8, 'samuel', '$2y$10$G6pD7sNX0nlJ4gwFRf0.XOmtSvyoim4jPNCYgDrKDIbf1fS3Cun1i', 'sam@gmail.ff');
 
 --
 -- Index pour les tables déchargées
@@ -245,25 +208,25 @@ ALTER TABLE `_user`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `ligne_commande`
 --
 ALTER TABLE `ligne_commande`
-  MODIFY `id_ligne_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id_ligne_commande` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `_user`
 --
 ALTER TABLE `_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées

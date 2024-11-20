@@ -448,6 +448,9 @@ function fetch_commande()
             $tva = 1.10;
         }
     }
+    else{
+        header("Location: index.php");
+    }
     $totalprixht = 0;
     $dbh = db_connect(); // connexion bdd
     $sql_produits = 'select id_produit, libelle, prix_ht from produit';
