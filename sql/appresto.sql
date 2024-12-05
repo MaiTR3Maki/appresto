@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 21 nov. 2024 à 00:52
+-- Généré le : jeu. 05 déc. 2024 à 10:52
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -29,6 +29,7 @@ USE `appresto`;
 -- Structure de la table `commande`
 --
 
+DROP TABLE IF EXISTS `commande`;
 CREATE TABLE `commande` (
   `id_commande` int(11) NOT NULL,
   `id_etat` int(11) DEFAULT NULL,
@@ -38,12 +39,20 @@ CREATE TABLE `commande` (
   `Id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id_commande`, `id_etat`, `_date`, `total_conso`, `type_conso`, `Id_user`) VALUES
+(1, 1, '2024-12-05 10:51:32', 32.45, 0, 1);
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `ligne_commande`
 --
 
+DROP TABLE IF EXISTS `ligne_commande`;
 CREATE TABLE `ligne_commande` (
   `id_ligne_commande` int(11) NOT NULL,
   `quantite` int(11) DEFAULT NULL,
@@ -53,8 +62,19 @@ CREATE TABLE `ligne_commande` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
+-- Déchargement des données de la table `ligne_commande`
+--
+
+INSERT INTO `ligne_commande` (`id_ligne_commande`, `quantite`, `total_ligne_ht`, `id_produit`, `id_commande`) VALUES
+(1, 1, 5.00, 0, 1),
+(2, 2, 8.00, 1, 1),
+(3, 1, 3.00, 7, 1),
+(4, 3, 13.50, 8, 1);
+
+--
 -- Déclencheurs `ligne_commande`
 --
+DROP TRIGGER IF EXISTS `after_ligne_insert`;
 DELIMITER $$
 CREATE TRIGGER `after_ligne_insert` AFTER INSERT ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_total_conso DECIMAL(15, 2);
@@ -82,6 +102,7 @@ CREATE TRIGGER `after_ligne_insert` AFTER INSERT ON `ligne_commande` FOR EACH RO
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `after_ligne_update`;
 DELIMITER $$
 CREATE TRIGGER `after_ligne_update` AFTER UPDATE ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_total_conso DECIMAL(15, 2);
@@ -109,6 +130,7 @@ CREATE TRIGGER `after_ligne_update` AFTER UPDATE ON `ligne_commande` FOR EACH RO
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `before_ligne_insert`;
 DELIMITER $$
 CREATE TRIGGER `before_ligne_insert` BEFORE INSERT ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_prix_ht DECIMAL(15, 2);
@@ -118,6 +140,7 @@ CREATE TRIGGER `before_ligne_insert` BEFORE INSERT ON `ligne_commande` FOR EACH 
 END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `before_ligne_update`;
 DELIMITER $$
 CREATE TRIGGER `before_ligne_update` BEFORE UPDATE ON `ligne_commande` FOR EACH ROW BEGIN
     DECLARE v_prix_ht DECIMAL(15, 2);
@@ -134,6 +157,7 @@ DELIMITER ;
 -- Structure de la table `produit`
 --
 
+DROP TABLE IF EXISTS `produit`;
 CREATE TABLE `produit` (
   `id_produit` int(11) NOT NULL,
   `libelle` varchar(255) DEFAULT NULL,
@@ -162,12 +186,20 @@ INSERT INTO `produit` (`id_produit`, `libelle`, `description`, `prix_ht`) VALUES
 -- Structure de la table `_user`
 --
 
+DROP TABLE IF EXISTS `_user`;
 CREATE TABLE `_user` (
   `id_user` int(11) NOT NULL,
   `pseudo` varchar(255) DEFAULT NULL,
   `mdp` varchar(255) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `_user`
+--
+
+INSERT INTO `_user` (`id_user`, `pseudo`, `mdp`, `mail`) VALUES
+(1, 'test', '$2y$10$uMAhCs4uQ0IMD6wQHFEXVOiDIBhjML0ZjLWZbDWlZ1Gyq54BQbXeu', 'test@test.test');
 
 --
 -- Index pour les tables déchargées
@@ -208,13 +240,13 @@ ALTER TABLE `_user`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `ligne_commande`
 --
 ALTER TABLE `ligne_commande`
-  MODIFY `id_ligne_commande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ligne_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `produit`
@@ -226,7 +258,7 @@ ALTER TABLE `produit`
 -- AUTO_INCREMENT pour la table `_user`
 --
 ALTER TABLE `_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées

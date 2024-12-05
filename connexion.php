@@ -30,7 +30,7 @@ check_session_user_connecte();
                 <input type="password" id="mdp" name="mdp" required>
             </div>
             <div>
-                <a href="commander.php"><input type="submit" name="submit" required="required" id="submit"></a>
+                <a href="commander.php"><input type="submit" name="submit" required="required" id="submit" value="Connexion"></a>
             </div>
         </form>
         <p>Vous n'avez pas de compte ? <a href="inscription.php">Inscrivez-vous</a></p>
