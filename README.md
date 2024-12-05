@@ -21,11 +21,11 @@ Permet la communication entre le client et le serveur.
 
 ## 🔧 Installation :
 
-Pour l'installation de notre application web, c'est [ici!](Documentation/Lot-6/Manuels/Installation).
+Pour l'installation de notre application web, c'est [ici!](Documentation/Lot-6/Manuels/Installation.md).
 
 ## 🔧 Utilisation:
 
-Vous ne savez pas comment utiliser notre application web ? C'est [ici!](Documentation/Lot-6/Manuels/Utilisation)
+Vous ne savez pas comment utiliser notre application web ? Consultez le manuel d'utilisation [ici!](Documentation/Lot-6/Manuels/Utilisation.md)
 
 ### 🆕 Mise à jour du 14/11/2024
 
