@@ -24,7 +24,8 @@ $rows = afficher_commandes();
             1 => 'En attente',
             2 => 'Acceptée',
             3 => 'Refusée',
-            4 => 'Terminée'
+            4 => 'Terminée',
+            5 => 'servie'
         ];
         if (count($rows) > 0) {
             foreach ($rows as $row) {
