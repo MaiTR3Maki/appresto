@@ -53,7 +53,7 @@ Partie 5 -> API <-
 
 Notre application contient des APIs :
 
-Pour accéder aux API, vous devez pour l'instant entrer les URLs ci-dessous. Vous devez remplacer "votredossier" par le nom du dossier qui contient le code source de l'application (Si vous voulez de l'aide pour l'installation, c'est ici : [link](/appresto/Documentation/Lot-6/Manuels/Installation.md))
+Pour accéder aux API, vous devez pour l'instant entrer les URLs ci-dessous. Vous devez remplacer "votredossier" par le nom du dossier qui contient le code source de l'application (Si vous voulez de l'aide pour l'installation, c'est ici : [link](../Manuels/Installation.md))
 
 1 API qui affiche sous format JSON un tableau des commandes et des lignes commandes associées. Celui-ci n'a pas de paramètre.
 
@@ -67,7 +67,7 @@ http://localhost/votredossier/webresto/appresto/api/commande_refuser.php?id_comm
 
 http://localhost/votredossier/webresto/appresto/api/commande_terminer.php?id_commande=1
 
-Si vous voulez plus d'informations sur les APIs, c'est ici : [link](/appresto/Documentation/Lot-5/doc_APIs.md)
+Si vous voulez plus d'informations sur les APIs, c'est ici : [link](../../lot-5/doc_APIs.md)
 
 
 
