@@ -1,6 +1,6 @@
---- Manuel d'utilisation ---
+## Manuel d'utilisation ---
 
--- Sommaire 
+# Sommaire 
 
 - Partie 1 -> Inscription
 - Partie 2 -> Connexion
@@ -9,7 +9,7 @@
 - Partie 5 -> API
 
 
-Partie 1 -> Inscription <-
+# Partie 1 -> Inscription <-
 
 Pour vous inscrire, dirigez vous vers la page d'inscription (Sur l'accueil, cliquez en haut à droite). 
 
@@ -22,20 +22,20 @@ Vous devez saisir les données suivantes :
 Ensuite, cliquez sur "Créer mon compte", vous serez redirigé vers la page de connexion.
 
 
-Partie 2 -> Connexion <-
+# Partie 2 -> Connexion <-
 
 Une fois inscrit, vous devez saisir vos identifiants sur la page de connexion, puis cliquez sur "Connexion".
 
 Vous pouvez accéder à la page de connexion directement depuis la page d'accueil en cliquant sur l'icône à gauche de l'inscription.
 
 
-Partie 3 -> Commande <-
+# Partie 3 -> Commande <-
 
 Une fois connecté, vous pouvez choisir les produits que vous souhaitez et leur quantité (10 max), puis cliquer sur "Valider" à droite des produits pour valider votre panier.
 
 Lorsque vous validez votre panier, vous serez redirigé vers une page qui vous propose de consommer votre commande sur place ou à emporter. En glissant votre souris sur l'une des deux options, la TVA correspondante sera affichée.
 
-Partie 4 -> Paiement <-
+# Partie 4 -> Paiement <-
 
 Après avoir choisi votre type de consommation (sur place - à emporter), vous serez redirigé vers la page paiement.
 
@@ -49,7 +49,7 @@ Une pop-up affichant le total TTC de votre commande vous demandera de confirmer 
 
 Une fois la commande passée, le récapitulatif de celle-ci vous sera présenté, et vous pouvez voir toutes vos commandes en cliquant sur "Mes commandes".
 
-Partie 5 -> API <-
+# Partie 5 -> API <-
 
 Notre application contient des APIs :
 

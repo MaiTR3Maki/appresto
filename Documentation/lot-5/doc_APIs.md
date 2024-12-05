@@ -1,4 +1,4 @@
-Ce document vise à décrire les échanges entre le client java (RestoSwing) et le serveur php (RestoWeb). Je précise que le client RestoSwing n'existe pas encore.
+## Ce document vise à décrire les échanges entre le client java (RestoSwing) et le serveur php (RestoWeb). Je précise que le client RestoSwing n'existe pas encore.
 
 Les échanges entre client et serveur sont gérés par des APIs. (Une API est une interface de communication qui permet d’échanger des données et des fonctionnalités.)
 

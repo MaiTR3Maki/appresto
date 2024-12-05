@@ -1,18 +1,18 @@
---- Manuel du jeu de test ---
+## Manuel du jeu de test ---
 
--- Sommaire 
+# Sommaire 
 
 - Partie 1 -> User et Password pour les tests
 - Partie 2 -> Données existantes pour les tests
 
 
-Partie 1 -> User et Password pour les tests <-
+# Partie 1 -> User et Password pour les tests <-
 
 User : test
 Password : test
 
 
-Partie 2 -> Données existantes pour les tests <-
+# Partie 2 -> Données existantes pour les tests <-
 
 Une commande existe déjà pour l'utilisateur "test".
 
