@@ -4,8 +4,8 @@
 2. Acceptée
 3. Refusée
 4. Terminée
-5. servie
+5. Servie
 
 ## Type de consommation :
 1. Sur place
-2. A emporter
+2. À emporter

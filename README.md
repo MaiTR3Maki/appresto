@@ -21,17 +21,13 @@ Permet la communication entre le client et le serveur.
 
 ## 🔧 Installation :
 
-Pour utiliser notre application web, vous devez avoir une base de données MySQL configurée et un serveur apache (Vous pouvez utiliser XAMPP !).
-
-Téléchargez notre application web depuis le dépôt GitHub et copiez-la sur votre serveur (le dossier htdocs si vous être sur XAMPP).
-
-Importez le script de création de la base de données fourni dans le dossier sql/appresto.sql, ou cliquez [ici](sql/appresto.sql).
-
-Assurez-vous que les tables et les données initiales sont correctement créées.
-
-Lancez la page index.php ([ici](index.php)) pour accéder à l'interface web de Patate Douce, vous pouvez créer un compte chez nous et commander !
+Pour l'installation de notre application web, c'est [ici!](Documentation/Lot-6/Manuels/Installation).
 
 Merci d'utiliser Patate Douce ! 🍠 Bon appétit !
+
+## 🔧 Utilisation:
+
+Vous ne savez pas comment utiliser notre application web ? C'est [ici!](Documentation/Lot-6/Manuels/Utilisation)
 
 ### 🆕 Mise à jour du 14/11/2024
 
