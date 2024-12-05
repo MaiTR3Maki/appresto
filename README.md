@@ -56,7 +56,7 @@ Une fois la commande passée, vous avez la possibilité de consulter vos command
 
 [Le modèle physique des données (script(s) SQL)](sql/appresto.sql)
 
-[Une description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/Lot-6/Documents/%C3%A9tat_possible)
+[Une description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/Lot-6/Documents/etat_possible.md)
 
 [Le sitemap (enchaînement des pages)](Documentation/Lot-1/Restoweb-%20Client.pdf)
 
