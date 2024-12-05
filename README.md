@@ -48,7 +48,7 @@ Vous pouvez sélectionner les produits et les quantités que vous souhaitez ache
 Une fois la commande passée, vous avez la possibilité de consulter vos commandes récentes, vérifier leur statut et les détails associés.
 
 ## Documentation 
-[Le diagramme des cas d'utilisation](Documentation/lot-1/Diagramme_d_Activité.drawio.pdf)
+[Le diagramme des cas d'utilisation](Documentation/lot-1/Diagramme_d%27Activit%C3%A9.drawio.pdf)
 
 [Le modèle conceptuel des données (looping ou équivalent)](Documentation/lot-1/MCD_final.jpg)
 
@@ -56,7 +56,7 @@ Une fois la commande passée, vous avez la possibilité de consulter vos command
 
 [Le modèle physique des données (script(s) SQL)](sql/appresto.sql)
 
-[Une description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/lot-6/Documents/état_possible)
+[Une description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/lot-6/Documents/%C3%A9tat_possible)
 
 [Le sitemap (enchaînement des pages)](Documentation/lot-1/Restoweb-%20Client.pdf)
 
