@@ -10,16 +10,16 @@ html {
 body {
     padding-top: 80px;
     /*décaler le contenu du header fixe en bass*/
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
     background-color: #ffffff; 
 }
 
 body.sur-place-bg {
-    background-color: #fff7f3;
+    background-color: #ffe9de;
 }
 
 body.a-emporter-bg {
-    background-color: rgb(255, 243, 242);
+    background-color: rgb(255, 228, 227);
 }
 
 
@@ -233,17 +233,15 @@ h4 {
     background-color: #ffc18e;
     border-radius: 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    transition: transform 0.3s ease;
+    transition: background-color .4s ease, transform 0.4s ease;
     min-height: 80px;
 }
 
 .produit-info:hover {
     transform: scale(.98);
-    background-color: rgb(255, 185, 132);
+    background-color: rgb(255, 189, 153);
 
 }
-
 
 .produit-gauche {
     display: flex;
@@ -818,7 +816,7 @@ h4 {
     left: 50%; 
     transform: translateX(-50%);
     z-index: 1000;
-    background: rgb(255, 168, 168);
+    background: rgb(255, 150, 150);
     padding: 5px; 
     border: none;
     border-radius: 8px;
