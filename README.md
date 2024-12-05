@@ -23,8 +23,6 @@ Permet la communication entre le client et le serveur.
 
 Pour l'installation de notre application web, c'est [ici!](Documentation/Lot-6/Manuels/Installation).
 
-Merci d'utiliser Patate Douce ! 🍠 Bon appétit !
-
 ## 🔧 Utilisation:
 
 Vous ne savez pas comment utiliser notre application web ? C'est [ici!](Documentation/Lot-6/Manuels/Utilisation)
@@ -59,3 +57,5 @@ Une fois la commande passée, vous avez la possibilité de consulter vos command
 [les maquettes de l'IHM (Balsamiq ou équivalent)](Documentation/Lot-1/Restoweb-%20Client.pdf)
 
 [la maquette JSON et si nécessaire les différents messages d'erreur si une réponse est notifiée](Documentation/lot-5/commandes_en_attente.json)
+
+## Merci d'utiliser Patate Douce ! 🍠 Bon appétit !
