@@ -30,7 +30,7 @@ Vous ne savez pas comment utiliser notre application web ? Consultez le manuel d
 ### 🆕 Mise à jour du 14/11/2024
 
 Nous venons de créer nos APIs, qui permettent de communiquer entre le client et le serveur.
-Vous pouvez consulter la documentation en suivant ce [lien](Documentation/lot-5/doc_APIs).
+Vous pouvez consulter la documentation en suivant ce [lien](Documentation/lot-5/doc_APIs.md).
 Un fichier JSON est également disponible [ici](Documentation/lot-5/commandes_en_attente.json).
 
 ### Mise à jour du 17/10/2024
