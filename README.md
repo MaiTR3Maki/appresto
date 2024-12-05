@@ -48,18 +48,18 @@ Vous pouvez sélectionner les produits et les quantités que vous souhaitez ache
 Une fois la commande passée, vous avez la possibilité de consulter vos commandes récentes, vérifier leur statut et les détails associés.
 
 ## Documentation 
-[Le diagramme des cas d'utilisation](Documentation/lot-1/Diagramme_d%27Activit%C3%A9.drawio.pdf)
+[Le diagramme des cas d'utilisation](Documentation/Lot-1/Diagramme_d_Activité.drawio.pdf)
 
-[Le modèle conceptuel des données (looping ou équivalent)](Documentation/lot-1/MCD_final.jpg)
+[Le modèle conceptuel des données (looping ou équivalent)](Documentation/Lot-1/MCD_final.jpg)
 
-[Le modèle logique des données (PHPMyAdmin ou équivalent)](Documentation/lot-1/MLD_final.jpg)
+[Le modèle logique des données (PHPMyAdmin ou équivalent)](Documentation/Lot-1/MLD_final.jpg)
 
 [Le modèle physique des données (script(s) SQL)](sql/appresto.sql)
 
-[Une description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/lot-6/Documents/%C3%A9tat_possible)
+[Une description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/Lot-6/Documents/%C3%A9tat_possible)
 
-[Le sitemap (enchaînement des pages)](Documentation/lot-1/Restoweb-%20Client.pdf)
+[Le sitemap (enchaînement des pages)](Documentation/Lot-1/Restoweb-%20Client.pdf)
 
-[les maquettes de l'IHM (Balsamiq ou équivalent)](Documentation/lot-1/Restoweb-%20Client.pdf)
+[les maquettes de l'IHM (Balsamiq ou équivalent)](Documentation/Lot-1/Restoweb-%20Client.pdf)
 
 [la maquette JSON et si nécessaire les différents messages d'erreur si une réponse est notifiée](Documentation/lot-5/commandes_en_attente.json)
