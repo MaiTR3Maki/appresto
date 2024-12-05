@@ -48,7 +48,7 @@ Vous pouvez sélectionner les produits et les quantités que vous souhaitez ache
 Une fois la commande passée, vous avez la possibilité de consulter vos commandes récentes, vérifier leur statut et les détails associés.
 
 ## Documentation 
-[Le diagramme des cas d'utilisation](Documentation/lot-1/Diagramme%20Utilisateur.drawio.pdf)
+[Le diagramme des cas d'utilisation](Documentation/lot-1/Diagramme_d_Activité.drawio.pdf)
 
 [Le modèle conceptuel des données (looping ou équivalent)](Documentation/lot-1/MCD_final.jpg)
 
