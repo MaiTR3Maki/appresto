@@ -42,20 +42,22 @@ Vous pouvez sélectionner les produits et les quantités que vous souhaitez ache
 Une fois la commande passée, vous avez la possibilité de consulter vos commandes récentes, vérifier leur statut et les détails associés.
 
 ## Documentation 
-[Le diagramme des cas d'utilisation](Documentation/Lot-1/Diagramme_d_Activité.drawio.pdf)
+[Diagramme des cas d'utilisation restoweb ](Documentation/Lot-1/DCU_RESTOWEB.png)
 
-[Le modèle conceptuel des données (looping ou équivalent)](Documentation/Lot-1/MCD_final.jpg)
+[Diagramme des cas d'utilisation restoswing ](Documentation/Lot-1/DCU_RESTOSWING.png)
 
-[Le modèle logique des données (PHPMyAdmin ou équivalent)](Documentation/Lot-1/MLD_final.jpg)
+[Modèle conceptuel des données](Documentation/Lot-1/MCD_APPRESTO.png)
 
-[Le modèle physique des données (script(s) SQL)](sql/appresto.sql)
+[Modèle logique des données](Documentation/Lot-1/MLD_APPRESTO.png)
 
-[Une description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/Lot-6/Documents/etat_possible.md)
+[Script de création de la BDD](sql/appresto.sql)
 
-[Le sitemap (enchaînement des pages)](Documentation/Lot-1/Restoweb-%20Client.pdf)
+[Description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](Documentation/Lot-6/Documents/etats_possibles.md)
 
-[les maquettes de l'IHM (Balsamiq ou équivalent)](Documentation/Lot-1/Restoweb-%20Client.pdf)
+[IHM et Sitemap RestoWeb](Documentation/Lot-1/Restoweb-%20Client.pdf)
 
-[la maquette JSON et si nécessaire les différents messages d'erreur si une réponse est notifiée](Documentation/lot-5/commandes_en_attente.json)
+[IHM et Sitemap RestoSwing](Documentation/Lot-1/RestoWeb%20-%20Java.pdf)
+
+[Maquette JSON](Documentation/lot-5/commandes_en_attente.json)
 
 ## Merci d'utiliser Patate Douce ! 🍠 Bon appétit !
