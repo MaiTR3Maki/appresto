@@ -1,4 +1,4 @@
-## Manuel d'utilisation ---
+## Manuel d'utilisation
 
 # Sommaire 
 
