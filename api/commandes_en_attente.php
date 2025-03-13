@@ -12,10 +12,10 @@ $i = 1;
 
 try {
     $sql = "select commande.id_commande,commande._date,commande.id_etat,
-    sum(ligne_commande.quantite),commande.total_conso
-    from commande inner join ligne_commande
-    on commande.id_commande=ligne_commande.id_commande
-    where id_etat=1
+    sum(ligne_commande.quantite),commande.total_conso,_user.pseudo
+    from commande,ligne_commande,_user
+   	where commande.id_commande=ligne_commande.id_commande
+    and commande.Id_user=_user.id_user
     GROUP by commande.id_commande";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
