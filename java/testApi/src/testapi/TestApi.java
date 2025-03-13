@@ -23,7 +23,7 @@ public class TestApi {
         
         System.out.println("HELLOO");
 
-        /*
+        
         String json = ""; // Le JSON brut
         String url = "http://localhost/projet/anne2/AP/appresto/api/commandes_en_attente.php";
 // Créer un HttpClient
@@ -49,7 +49,7 @@ public class TestApi {
 //ex.printStackTrace();
         }
 
-       */
+       
 
     }
 
