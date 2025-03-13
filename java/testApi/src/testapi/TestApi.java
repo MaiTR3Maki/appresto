@@ -20,12 +20,9 @@ public class TestApi {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        System.out.println("HELLOO");
-
-        
+     
         String json = ""; // Le JSON brut
-        String url = "http://localhost/projet/anne2/AP/appresto/api/commandes_en_attente.php";
+        String url = "http://localhost/projet/anne2/AP/appresto/appliweb/api/commandes_en_attente.php";
 // Créer un HttpClient
         HttpClient client = HttpClient.newHttpClient();
 // Crée une requête HTTP GET
