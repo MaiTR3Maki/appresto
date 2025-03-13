@@ -43,20 +43,26 @@ foreach ($commandes as &$commande) {
     }
     $commande['lignes_commande'] = $lignes_commande;
 }
+
+
 $json = json_encode($commandes);
+
+
 header("Content-type: application/json; charset=utf-8");
 echo $json;
+
 /*
-$file =fopen('../Documentations/lot-5/commandes_en_attente.json', 'w');
+$file = fopen('commandes_en_attente.json', 'w');
 if ($file==false){
     echo"erreur: impossible de créer ou d'ouvrir le fichier .json";
     exit;
 }
-fwrite($file,$json);
+//fwrite($file,$json);
+// condition pour  verifier l'ecriture ET QUI éCRIS DANS LE FICHIER
 if (fwrite($file, $json) === false){
     echo"Erreur: Impossible d'écrire le fichier json";
     fclose($file);
-    exit;
+
 }
 fclose($file);
 */
