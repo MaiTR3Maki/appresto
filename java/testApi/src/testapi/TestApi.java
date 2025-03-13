@@ -21,31 +21,6 @@ public class TestApi {
     public static void main(String[] args) {
         // TODO code application logic here
      
-        String json = ""; // Le JSON brut
-        String url = "http://localhost/projet/anne2/AP/appresto/appliweb/api/commandes_en_attente.php";
-// Créer un HttpClient
-        HttpClient client = HttpClient.newHttpClient();
-// Crée une requête HTTP GET
-        try {
-// Construit l'URL de la requête
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI(url))
-                    .build();
-// Envoie la requête et attend la réponse
-            HttpResponse<String> response = client.send(request,
-                    HttpResponse.BodyHandlers.ofString());
-// Vérifie que la réponse est normale
-            if (response.statusCode() == 200) {
-                json = response.body();
-                 System.out.println(json);
-            } else {
-                System.err.println("Erreur : Code statut " + response.statusCode());
-            }
-        } catch (Exception ex) {
-            System.err.println("Erreur : " + ex.getMessage());
-//ex.printStackTrace();
-        }
-
        
 
     }
