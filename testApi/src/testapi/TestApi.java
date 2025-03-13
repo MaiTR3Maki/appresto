@@ -20,7 +20,10 @@ public class TestApi {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        System.out.println("HELLOO");
 
+        /*
         String json = ""; // Le JSON brut
         String url = "http://localhost/projet/anne2/AP/appresto/api/commandes_en_attente.php";
 // Créer un HttpClient
@@ -37,6 +40,7 @@ public class TestApi {
 // Vérifie que la réponse est normale
             if (response.statusCode() == 200) {
                 json = response.body();
+                 System.out.println(json);
             } else {
                 System.err.println("Erreur : Code statut " + response.statusCode());
             }
@@ -45,7 +49,7 @@ public class TestApi {
 //ex.printStackTrace();
         }
 
-        System.out.println(json);
+       */
 
     }
 
