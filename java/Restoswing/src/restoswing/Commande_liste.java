@@ -1,0 +1,277 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package restoswing;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+/**
+ *
+ * @author FM504305
+ */
+public class Commande_liste extends javax.swing.JFrame {
+
+    ArrayList<Commande> regions; // Collection des régions
+    ArrayList<LigneCommande> departements; // Collection des départements
+
+    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/appliweb/api/commandes_en_attente.php"; // URL de l'API
+    String url;
+
+    /**
+     * Creates new form MyJFrame
+     */
+    public Commande_liste() {
+        initComponents();
+        get_data();
+    }
+
+    // Appelle l'API et remplit la table des régions
+    public void get_data() {
+
+        regions = new ArrayList<>(); // Réinitialise la collection des régions
+
+        String json = ""; // Le JSON brut
+        int i = 0; // Indice sur les regions
+        int j = 0; // Indice sur les départements d'une région
+
+        url = API_URL + "/depreg_liste.php";
+
+        // Créer un HttpClient
+        HttpClient client = HttpClient.newHttpClient();
+        // Crée une requête HTTP GET
+        try {
+            // Construit l'URL de la requête
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI(url))
+                    .build();
+            // Envoie la requête et attend la réponse
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            // Vérifie que la réponse est normale
+            if (response.statusCode() == 200) {
+                json = response.body();
+            } else {
+                System.err.println("Erreur : Code statut " + response.statusCode());
+            }
+
+        } catch (Exception ex) {
+            System.err.println("Erreur : " + ex.getMessage());
+            //ex.printStackTrace();
+        }
+        //System.out.println(json);
+
+        // Parse le fichier et remplit la collection d'objets métier
+        try {
+            JSONArray regions_json = new JSONArray(json);
+            for (i = 0; i < regions_json.length(); i++) {
+                // Récupère la region
+                JSONObject region_json = regions_json.getJSONObject(i);
+                // Récupère les départements de la région
+                departements = new ArrayList<>(); // Réinitialise la collection des départements
+
+                JSONArray departements_json = region_json.getJSONArray("lignes_commande");
+
+                for (j = 0; j < departements_json.length(); j++) {
+                    JSONObject departement_json = departements_json.getJSONObject(j);
+                    LigneCommande departement = new LigneCommande(departement_json.getInt("id_ligne_commande"), departement_json.getString("libelle"), departement_json.getInt("quantite"));
+                    departements.add(departement);
+                }
+                // Crée un objet métier à partir du JSON
+                Commande region = new Commande(region_json.getInt("id_commande"), region_json.getString("_date"), region_json.getInt("id_etat")/*changer en String*/, region_json.getInt("sum(ligne_commande.quantite)"), region_json.getDouble("total_conso"), region_json.getString("pseudo"), departements);
+                regions.add(region);
+            }
+            
+        } catch (Exception ex) {
+            System.err.println("Erreur : " + ex.getMessage());
+            ex.printStackTrace();
+        }
+
+        // Construit le tableau de données à partir de la collection
+        Object[][] data = new Object[regions.size()][5];
+
+        for (i = 0; i < regions.size(); i++) {
+            data[i][0] = regions.get(i).getIdcommande();
+            data[i][1] = regions.get(i).getDate();
+            data[i][2] = regions.get(i).getId_etat();
+            data[i][3] = regions.get(i).getQuantite();
+            data[i][4] = regions.get(i).getTotal_conso();
+
+        } // for
+
+        // Construit le tableau des entêtes
+        String[] cols = {"ID", "Date/Heure", "Etat", "Nb plats", "Montant"};
+
+        // Construit le modèle
+        DefaultTableModel model_region = new DefaultTableModel(data, cols);
+
+        // Met à jour le modèle dans le JTable
+        jTable1.setModel(model_region);
+
+    }
+
+    /**
+     * Creates new form Liste_commande
+     */
+    /*
+    public Commande_liste() {
+        initComponents();
+    }
+     */
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Liste des comandes");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Restoswing");
+
+        jButton1.setText("Détails");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Quitter");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Date/Heure", "Etat", "Nb plats", "Montant"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setText("liste des commandes");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel1)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Lignecommande_liste fenetre2 = new Lignecommande_liste(this, true);
+        fenetre2.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Commande_liste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Commande_liste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Commande_liste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Commande_liste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Commande_liste().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    // End of variables declaration//GEN-END:variables
+}

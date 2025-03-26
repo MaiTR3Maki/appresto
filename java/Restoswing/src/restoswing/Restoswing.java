@@ -11,21 +11,15 @@ package restoswing;
  */
 public class Restoswing {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         
-        //appeler API
-        
-        //Parser Json
-        
-        //alimenter la Jtable
-        
-        //affichage des fenétre
-        Liste_commande fenetre1 = new Liste_commande();
-        fenetre1.setVisible(true);
-    }
-    
-}
+        // Ouvre la fenêtre des régions
+        Commande_liste frame = new Commande_liste();
+        frame.setTitle("Restoswing");
+        frame.setResizable(false);
+        frame.setVisible(true);
+
+    } // main()
+
+
+} // class RestoSwing
