@@ -21,10 +21,10 @@ import org.json.JSONObject;
  */
 public class Commande_liste extends javax.swing.JFrame {
 
-    ArrayList<Commande> regions; // Collection des régions
-    ArrayList<LigneCommande> departements; // Collection des départements
+    ArrayList<Commande> commandes; // Collection des régions
+    ArrayList<LigneCommande> ligne_commande; // Collection des départements
 
-    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/appliweb/api/commandes_en_attente.php"; // URL de l'API
+    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/appliweb/api"; // URL de l'API
     String url;
 
     /**
@@ -38,13 +38,13 @@ public class Commande_liste extends javax.swing.JFrame {
     // Appelle l'API et remplit la table des régions
     public void get_data() {
 
-        regions = new ArrayList<>(); // Réinitialise la collection des régions
+        commandes = new ArrayList<>(); // Réinitialise la collection des régions
 
         String json = ""; // Le JSON brut
-        int i = 0; // Indice sur les regions
+        int i = 0; // Indice sur les commandes
         int j = 0; // Indice sur les départements d'une région
 
-        url = API_URL + "/depreg_liste.php";
+        url = API_URL + "/commandes_en_attente.php";
 
         // Créer un HttpClient
         HttpClient client = HttpClient.newHttpClient();
@@ -71,23 +71,47 @@ public class Commande_liste extends javax.swing.JFrame {
 
         // Parse le fichier et remplit la collection d'objets métier
         try {
-            JSONArray regions_json = new JSONArray(json);
-            for (i = 0; i < regions_json.length(); i++) {
-                // Récupère la region
-                JSONObject region_json = regions_json.getJSONObject(i);
+            JSONArray commandes_json = new JSONArray(json);
+            for (i = 0; i < commandes_json.length(); i++) {
+                // Récupère la commande
+                JSONObject commande_json = commandes_json.getJSONObject(i);
+                String lib_id_etat="";
+                //change idetat en string
+                switch (commande_json.getInt("id_etat")){
+                    case 1:
+                         lib_id_etat="en attente";
+                         break;
+                    case 2:
+                        lib_id_etat="Acceptée";
+                        break;
+                    case 3:
+                        lib_id_etat="Refusée";
+                        break;
+                    case 4:
+                        lib_id_etat="Terminée";
+                        break;
+                    case 5:
+                        lib_id_etat="servie";
+                        break;
+                    default:
+                        lib_id_etat = "Commande anormale";
+                }
+                       
+             
                 // Récupère les départements de la région
-                departements = new ArrayList<>(); // Réinitialise la collection des départements
+                ligne_commande = new ArrayList<>(); // Réinitialise la collection des départements
 
-                JSONArray departements_json = region_json.getJSONArray("lignes_commande");
+                JSONArray departements_json = commande_json.getJSONArray("lignes_commande");
 
                 for (j = 0; j < departements_json.length(); j++) {
                     JSONObject departement_json = departements_json.getJSONObject(j);
                     LigneCommande departement = new LigneCommande(departement_json.getInt("id_ligne_commande"), departement_json.getString("libelle"), departement_json.getInt("quantite"));
-                    departements.add(departement);
+                    ligne_commande.add(departement);
                 }
+                
                 // Crée un objet métier à partir du JSON
-                Commande region = new Commande(region_json.getInt("id_commande"), region_json.getString("_date"), region_json.getInt("id_etat")/*changer en String*/, region_json.getInt("sum(ligne_commande.quantite)"), region_json.getDouble("total_conso"), region_json.getString("pseudo"), departements);
-                regions.add(region);
+                Commande commande = new Commande(commande_json.getInt("id_commande"), commande_json.getString("_date"), lib_id_etat, commande_json.getInt("sum(ligne_commande.quantite)"), commande_json.getDouble("total_conso"), commande_json.getString("pseudo"), ligne_commande);
+                commandes.add(commande);
             }
             
         } catch (Exception ex) {
@@ -95,15 +119,16 @@ public class Commande_liste extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        // Construit le tableau de données à partir de la collection
-        Object[][] data = new Object[regions.size()][5];
 
-        for (i = 0; i < regions.size(); i++) {
-            data[i][0] = regions.get(i).getIdcommande();
-            data[i][1] = regions.get(i).getDate();
-            data[i][2] = regions.get(i).getId_etat();
-            data[i][3] = regions.get(i).getQuantite();
-            data[i][4] = regions.get(i).getTotal_conso();
+        // Construit le tableau de données à partir de la collection
+        Object[][] data = new Object[commandes.size()][5];
+
+        for (i = 0; i < commandes.size(); i++) {
+            data[i][0] = commandes.get(i).getIdcommande();
+            data[i][1] = commandes.get(i).getDate();
+            data[i][2] = commandes.get(i).getId_etat();
+            data[i][3] = commandes.get(i).getQuantite();
+            data[i][4] = commandes.get(i).getTotal_conso();
 
         } // for
 
@@ -111,13 +136,13 @@ public class Commande_liste extends javax.swing.JFrame {
         String[] cols = {"ID", "Date/Heure", "Etat", "Nb plats", "Montant"};
 
         // Construit le modèle
-        DefaultTableModel model_region = new DefaultTableModel(data, cols);
+        DefaultTableModel model_commande = new DefaultTableModel(data, cols);
 
         // Met à jour le modèle dans le JTable
-        jTable1.setModel(model_region);
+        Table.setModel(model_commande);
 
     }
-
+       
     /**
      * Creates new form Liste_commande
      */
@@ -139,7 +164,7 @@ public class Commande_liste extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Table = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,7 +187,7 @@ public class Commande_liste extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -173,7 +198,7 @@ public class Commande_liste extends javax.swing.JFrame {
                 "ID", "Date/Heure", "Etat", "Nb plats", "Montant"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Table);
 
         jLabel2.setText("liste des commandes");
 
@@ -219,8 +244,33 @@ public class Commande_liste extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Lignecommande_liste fenetre2 = new Lignecommande_liste(this, true);
-        fenetre2.setVisible(true);
+        int row = Table.getSelectedRow();
+        //System.out.println("row ="+row);
+
+        // Récupére la région sélectionnée et ouvre la fenêtre JDialog des départements de la région
+        if (row >= 0 && row < Table.getRowCount()) {
+            // Récupére la région sélectionnée
+            Commande commande = commandes.get(row);
+            //System.out.println(region);
+
+            // Crée la fenêtre JDialog des départements en passant la région sélectionnée  
+            Lignecommande_liste fenetre2 = new Lignecommande_liste(this, true, commande);
+
+            // Ajoute un Listener quand la fenêtre "departement_liste" est fermée
+            fenetre2.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    System.out.println("jdialog window closed"); // test
+                    get_data(); // Rafraichit le JTable
+                } // windowClosed()
+
+            });
+
+            // Affiche la fenêtre des départements
+            fenetre2.setVisible(true);
+        } // if
+        
+        /*Lignecommande_liste fenetre2 = new Lignecommande_liste(this, true);
+        fenetre2.setVisible(true);*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -267,11 +317,11 @@ public class Commande_liste extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Table;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

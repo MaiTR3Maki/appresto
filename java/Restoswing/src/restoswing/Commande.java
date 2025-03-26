@@ -15,8 +15,8 @@ import org.json.JSONObject;
 public class Commande {
     private int idcommande;
     private String date;
-    private int id_etat;
-    /*private String string_etat;*/
+    private String id_etat;
+
     private int quantite;
     private double total_conso;
     private String pseudo;
@@ -24,7 +24,7 @@ public class Commande {
 
     //constructeur
     
-    public Commande(int idcommande, String date, int id_etat, int quantite, double total_conso, String pseudo,ArrayList ligne_Commande) {
+    public Commande(int idcommande, String date, String id_etat, int quantite, double total_conso, String pseudo,ArrayList ligne_Commande) {
         this.idcommande = idcommande;
         this.date = date;
         this.id_etat = id_etat;
@@ -42,7 +42,7 @@ public class Commande {
         return date;
     }
 
-    public int getId_etat() {
+    public String getId_etat() {
         return id_etat;
     }
 
@@ -72,7 +72,7 @@ public class Commande {
         this.date = date;
     }
 
-    public void setId_etat(int id_etat) {
+    public void setId_etat(String id_etat) {
         this.id_etat = id_etat;
     }
 
