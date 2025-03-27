@@ -24,7 +24,7 @@ public class Commande_liste extends javax.swing.JFrame {
     ArrayList<Commande> commandes; // Collection des régions
     ArrayList<LigneCommande> ligne_commande; // Collection des départements
 
-    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/appliweb/api"; // URL de l'API
+    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/restoweb/api/"; // URL de l'API
     String url;
 
     /**

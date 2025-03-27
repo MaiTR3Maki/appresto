@@ -161,7 +161,7 @@ public class Lignecommande_liste extends javax.swing.JDialog {
 
         jLabel6.setText("Détails d'une commande");
 
-        jLabel7.setText("ID:");
+        jLabel7.setText("ID_commande:");
 
         jLabel8.setText("date:");
 
@@ -198,7 +198,7 @@ public class Lignecommande_liste extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(410, 410, 410)
                         .addComponent(jButton4)))
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
