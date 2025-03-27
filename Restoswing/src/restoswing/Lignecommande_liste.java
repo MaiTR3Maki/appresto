@@ -29,25 +29,26 @@ public class Lignecommande_liste extends javax.swing.JDialog {
     public Lignecommande_liste(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        get_data();
+        
     }
 
     public Lignecommande_liste(java.awt.Frame parent, boolean modal, Commande commande) {
         super(parent, modal);
         this.commande = commande; // Récupère la commande en cours
         initComponents();
-        get_data();
+        
     }
 
-    // Récupère la région et remplit les départements
+    // Récupère la commande et remplit les ligne_commandes
     public void get_data() {
 
-        // Récupère les départements de la région
+        // Récupère les ligne_commandes de la commandes
         this.ligne_commandes = this.commande.getLigne_Commande();
 
         // Construit le tableau de données à partir de la collection
         Object[][] data = new Object[ligne_commandes.size()][3];
 
+        // for pour afficher les donnée dans le tableau
         for (i = 0; i < ligne_commandes.size(); i++) {
             data[i][0] = ligne_commandes.get(i).getId_ligne();
             data[i][1] = ligne_commandes.get(i).getLibelle();
@@ -63,7 +64,7 @@ public class Lignecommande_liste extends javax.swing.JDialog {
         // Met à jour le modèle dans le JTable
         jTable1.setModel(model_departement);
 
-        // Met à jour le nom de la région
+        // Met à jour l'id la date et le pseudo
         ID_utilisateur.setText(String.valueOf(commande.getIdcommande()));
         date_commande.setText(commande.getDate());
         pseudo_utilisateur.setText(commande.getPseudo());
