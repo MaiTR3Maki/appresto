@@ -30,7 +30,7 @@ Vous ne savez pas comment utiliser notre application web ? Consultez le manuel d
 ### 🆕 Mise à jour du 27/03/2025
 Nous venons de créer le client lourd Java, qui permet aux restaurateurs d'accepter, refuser ou prévenir que les commandes sont terminée terminer.
 Le restoswing permet de visualiser les commandes en cours et de voir le détail des commandes.
-le code est disponible [ici](restoswing/).
+le code est disponible [ici](Restoswing/).
 
 ###  Mise à jour du 14/11/2024
 
