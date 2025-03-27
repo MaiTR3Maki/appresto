@@ -21,17 +21,22 @@ Permet la communication entre le client et le serveur.
 
 ## 🔧 Installation :
 
-Pour l'installation de notre application web, c'est [ici!](appliweb/Documentation/Lot-6/Manuels/Installation.md).
+Pour l'installation de notre application web, c'est [ici!](restoweb/Documentation/Lot-6/Manuels/Installation.md).
 
 ## 🔧 Utilisation:
 
-Vous ne savez pas comment utiliser notre application web ? Consultez le manuel d'utilisation [ici!](appliweb/Documentation/Lot-6/Manuels/Utilisation.md)
+Vous ne savez pas comment utiliser notre application web ? Consultez le manuel d'utilisation [ici!](restoweb/Documentation/Lot-6/Manuels/Utilisation.md)
 
-### 🆕 Mise à jour du 14/11/2024
+### 🆕 Mise à jour du 27/03/2025
+Nous venons de créer le client lourd Java, qui permet aux restaurateurs d'accepter, refuser ou prévenir que les commandes sont terminée terminer.
+Le restoswing permet de visualiser les commandes en cours et de voir le détail des commandes.
+le code est disponible [ici](restoswing/).
+
+###  Mise à jour du 14/11/2024
 
 Nous venons de créer nos APIs, qui permettent de communiquer entre le client et le serveur.
-Vous pouvez consulter la documentation en suivant ce [lien](appliweb/Documentation/lot-5/doc_APIs.md).
-Un fichier JSON est également disponible [ici](appliweb/Documentation/lot-5/commandes_en_attente.json).
+Vous pouvez consulter la documentation en suivant ce [lien](restoweb/Documentation/lot-5/doc_APIs.md).
+Un fichier JSON est également disponible [ici](restoweb/Documentation/lot-5/commandes_en_attente.json).
 
 ### Mise à jour du 17/10/2024
 
@@ -42,22 +47,22 @@ Vous pouvez sélectionner les produits et les quantités que vous souhaitez ache
 Une fois la commande passée, vous avez la possibilité de consulter vos commandes récentes, vérifier leur statut et les détails associés.
 
 ## Documentation 
-[Diagramme des cas d'utilisation restoweb ](appliweb/Documentation/Lot-1/DCU_RESTOWEB.png)
+[Diagramme des cas d'utilisation restoweb ](restoweb/Documentation/Lot-1/DCU_RESTOWEB.png)
 
-[Diagramme des cas d'utilisation restoswing ](appliweb/Documentation/Lot-1/DCU_RESTOSWING.png)
+[Diagramme des cas d'utilisation restoswing ](restoweb/Documentation/Lot-1/DCU_RESTOSWING.png)
 
-[Modèle conceptuel des données](appliweb/Documentation/Lot-1/MCD_APPRESTO.png)
+[Modèle conceptuel des données](restoweb/Documentation/Lot-1/MCD_APPRESTO.png)
 
-[Modèle logique des données](appliweb/Documentation/Lot-1/MLD_APPRESTO.png)
+[Modèle logique des données](restoweb/Documentation/Lot-1/MLD_APPRESTO.png)
 
-[Script de création de la BDD](appliweb/sql/appresto.sql)
+[Script de création de la BDD](restoweb/sql/appresto.sql)
 
-[Description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](appliweb/Documentation/Lot-6/Documents/etats_possibles.md)
+[Description des valeurs possibles pour : les états des commandes/les types de conso. (sur place/à emporter)](restoweb/Documentation/Lot-6/Documents/etats_possibles.md)
 
-[IHM et Sitemap RestoWeb](appliweb/Documentation/Lot-1/Restoweb-%20Client.pdf)
+[IHM et Sitemap RestoWeb](restoweb/Documentation/Lot-1/Restoweb-%20Client.pdf)
 
-[IHM et Sitemap RestoSwing](appliweb/Documentation/Lot-1/RestoWeb%20-%20Java.pdf)
+[IHM et Sitemap RestoSwing](restoweb/Documentation/Lot-1/RestoWeb%20-%20Java.pdf)
 
-[Maquette JSON](appliweb/Documentation/lot-5/commandes_en_attente.json)
+[Maquette JSON](restoweb/Documentation/lot-5/commandes_en_attente.json)
 
 ## Merci d'utiliser Patate Douce ! 🍠 Bon appétit !
