@@ -29,6 +29,7 @@ public class Lignecommande_liste extends javax.swing.JDialog {
     public Lignecommande_liste(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        get_data();
         
     }
 
@@ -36,7 +37,7 @@ public class Lignecommande_liste extends javax.swing.JDialog {
         super(parent, modal);
         this.commande = commande; // Récupère la commande en cours
         initComponents();
-        
+         get_data();
     }
 
     // Récupère la commande et remplit les ligne_commandes

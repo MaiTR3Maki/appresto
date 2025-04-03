@@ -24,16 +24,15 @@ public class Commande_liste extends javax.swing.JFrame {
     ArrayList<Commande> commandes; // Collection des régions
     ArrayList<LigneCommande> ligne_commande; // Collection des départements
     
-//-----------------changer l'url en fonction  du chemin dans lequel le projet a été mis !!!!!!!!!!!!!!!!!!!!!!
-    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/restoweb/api/"; // URL de l'API
-    
-    String url;
+    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/restoweb/api"; // URL de l'APi
+    //String url;
 
     /**
      * Creates new form MyJFrame
      */
     public Commande_liste() {
         initComponents();
+        get_data();
     }
 
     // Appelle l'API et remplit la table des régions
@@ -45,8 +44,8 @@ public class Commande_liste extends javax.swing.JFrame {
         int i = 0; // Indice sur les commandes
         int j = 0; // Indice sur les départements d'une région
 
-        url = API_URL + "/commandes_en_attente.php";
-
+       String url = API_URL + "/commandes_en_attente.php";
+        
         // Créer un HttpClient
         HttpClient client = HttpClient.newHttpClient();
         // Crée une requête HTTP GET
