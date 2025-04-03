@@ -24,7 +24,7 @@ public class Commande_liste extends javax.swing.JFrame {
     ArrayList<Commande> commandes; // Collection des régions
     ArrayList<LigneCommande> ligne_commande; // Collection des départements
 
-    static final String API_URL = "http://localhost/projet/Appresto/appresto/restoweb/api"; // URL de l'API
+    static final String API_URL = "http://localhost/projet/anne2/AP/appresto/appliweb/api"; // URL de l'API
     String url;
 
     /**
@@ -32,7 +32,6 @@ public class Commande_liste extends javax.swing.JFrame {
      */
     public Commande_liste() {
         initComponents();
-        get_data();
     }
 
     // Appelle l'API et remplit la table des régions
@@ -76,7 +75,7 @@ public class Commande_liste extends javax.swing.JFrame {
                 // Récupère la commande
                 JSONObject commande_json = commandes_json.getJSONObject(i);
                 String lib_id_etat="";
-                //change idetat en string
+                //change idetat en string pour afficher le texte, il ne doit afficher que en attente.
                 switch (commande_json.getInt("id_etat")){
                     case 1:
                          lib_id_etat="en attente";
@@ -100,11 +99,13 @@ public class Commande_liste extends javax.swing.JFrame {
              
                 // Récupère les départements de la région
                 ligne_commande = new ArrayList<>(); // Réinitialise la collection des départements
+                
+                
+                JSONArray ligne_commande_json = commande_json.getJSONArray("lignes_commande");
 
-                JSONArray departements_json = commande_json.getJSONArray("lignes_commande");
-
-                for (j = 0; j < departements_json.length(); j++) {
-                    JSONObject departement_json = departements_json.getJSONObject(j);
+                //permet de remplir les lignes de commandes  dansun objet puis dans un tableau.
+                for (j = 0; j < ligne_commande_json.length(); j++) {
+                    JSONObject departement_json = ligne_commande_json.getJSONObject(j);
                     LigneCommande departement = new LigneCommande(departement_json.getInt("id_ligne_commande"), departement_json.getString("libelle"), departement_json.getInt("quantite"));
                     ligne_commande.add(departement);
                 }
@@ -123,6 +124,7 @@ public class Commande_liste extends javax.swing.JFrame {
         // Construit le tableau de données à partir de la collection
         Object[][] data = new Object[commandes.size()][5];
 
+           // donnée ise dans le tableau des commandes.
         for (i = 0; i < commandes.size(); i++) {
             data[i][0] = commandes.get(i).getIdcommande();
             data[i][1] = commandes.get(i).getDate();

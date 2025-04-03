@@ -16,6 +16,7 @@ try {
     from commande,ligne_commande,_user
    	where commande.id_commande=ligne_commande.id_commande
     and commande.Id_user=_user.id_user
+    and commande.id_etat=1
     GROUP by commande.id_commande";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
